@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://q0lekxftu5sj"]
+
+[ext_resource type="Script" uid="uid://cy8nf0jxuln73" path="res://ui/menus/title_screen.gd" id="2_gn1cq"]
+[ext_resource type="FontFile" uid="uid://cuuvj7js0qap7" path="res://common/fonts/the-bomb-sound.regular.ttf" id="2_rhlm1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t2vdl"]
+font = ExtResource("2_rhlm1")
+font_size = 150
+font_color = Color(0.9811196, 0.9870741, 0.99966997, 1)
+outline_size = 30
+outline_color = Color(0.27255166, 0.21535572, 0.99999994, 1)
+
+[node name="Title_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_gn1cq")
+
+[node name="Title" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -775.0
+offset_top = -324.5
+offset_right = 775.0
+offset_bottom = -143.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Path Of Sorcerers"
+label_settings = SubResource("LabelSettings_t2vdl")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -133.0
+offset_top = -476.0
+offset_right = 133.0
+offset_bottom = -164.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="StartBtn" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start"
+
+[node name="SettingsBtn" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Settings"
+
+[node name="CreditsBtn" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Credits"
+
+[node name="QuitBtn" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"

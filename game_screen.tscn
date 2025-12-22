@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://bwlgq3t0fdb61"]
+
+[ext_resource type="Script" uid="uid://cks8lg3ysrocd" path="res://game_screen.gd" id="1_j7yda"]
+[ext_resource type="PackedScene" uid="uid://43ku0c7m8gqa" path="res://player/player.tscn" id="1_yla3h"]
+[ext_resource type="Script" uid="uid://b8psn2d8gy42n" path="res://levels/levels/level_item.gd" id="2_3vj30"]
+[ext_resource type="PackedScene" uid="uid://cduvywq42xys" path="res://ui/menus/end_menu.tscn" id="2_j7yda"]
+[ext_resource type="Script" uid="uid://cr752oxghekfm" path="res://levels/levels/level_graph.gd" id="3_6mti6"]
+[ext_resource type="PackedScene" uid="uid://byl640sm8s2b5" path="res://ui/menus/pause_menu_controller.tscn" id="3_lxtpa"]
+[ext_resource type="AudioStream" uid="uid://cgkhr5s5txcxx" path="res://common/music/EZDNB2 (CC-BY Of Far Different Nature).ogg" id="4_3vj30"]
+
+[sub_resource type="Resource" id="Resource_aybt7"]
+script = ExtResource("2_3vj30")
+next_level = 1
+level_path = "uid://bnp40e3u1gnfo"
+metadata/_custom_type_script = "uid://b8psn2d8gy42n"
+
+[sub_resource type="Resource" id="Resource_oymjd"]
+script = ExtResource("3_6mti6")
+level_list = Array[ExtResource("2_3vj30")]([SubResource("Resource_aybt7")])
+metadata/_custom_type_script = "uid://cr752oxghekfm"
+
+[node name="GameScreen" type="Node2D"]
+process_mode = 1
+rotation = -0.00129737
+script = ExtResource("1_j7yda")
+level_graph = SubResource("Resource_oymjd")
+
+[node name="Player" parent="." instance=ExtResource("1_yla3h")]
+unique_name_in_owner = true
+position = Vector2(959.29846, 541.2451)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="End Menu" parent="CanvasLayer" instance=ExtResource("2_j7yda")]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+
+[node name="PauseMenuController" parent="CanvasLayer" instance=ExtResource("3_lxtpa")]
+visible = false
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("4_3vj30")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"

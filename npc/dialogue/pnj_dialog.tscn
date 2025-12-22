@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://bae2i2ex4hl8a"]
+
+[ext_resource type="Theme" uid="uid://cshg3sgf0xxq" path="res://npc/dialogue/dialogue_box_theme.tres" id="1_k0yjv"]
+[ext_resource type="Script" uid="uid://bsagx853txrir" path="res://npc/dialogue/pnj_dialog.gd" id="2_fkha5"]
+[ext_resource type="Texture2D" uid="uid://copkt78vgp37i" path="res://npc/dialogue/sophia.png" id="2_ghphy"]
+[ext_resource type="Texture2D" uid="uid://d000xjtr4iqtk" path="res://npc/dialogue/emotion_regular.png" id="3_fkha5"]
+
+[node name="PNJ_Dialog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_k0yjv")
+script = ExtResource("2_fkha5")
+metadata/_edit_lock_ = true
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.33333334, 0.33333334, 0.33333334, 0.4627451)
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -640.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PNJ_Body" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_ghphy")
+
+[node name="PNJ_Face" type="TextureRect" parent="HBoxContainer/PNJ_Body"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -320.0
+offset_right = 256.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fkha5")
+
+[node name="Container" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextBox" type="RichTextLabel" parent="HBoxContainer/Container"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.55
+anchor_right = 0.85
+anchor_bottom = 0.95
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Test Text
+"
+fit_content = true
+scroll_active = false
+
+[node name="NextButton" type="Button" parent="HBoxContainer/Container"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.87
+anchor_top = 0.8
+anchor_right = 0.9
+anchor_bottom = 0.95
+size_flags_horizontal = 10
+size_flags_vertical = 8
+size_flags_stretch_ratio = 0.2
+text = "next"

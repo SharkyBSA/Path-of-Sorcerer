@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5ob2r2f5eror"]
+
+[ext_resource type="Shader" uid="uid://dw5wfmtgj8k2m" path="res://common/particles/confettis/confettis.gdshader" id="1_vq8ax"]
+[ext_resource type="Texture2D" uid="uid://c33mf20ohybyi" path="res://common/particles/white_circle.png" id="1_y6bgu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjekw"]
+shader = ExtResource("1_vq8ax")
+
+[sub_resource type="Gradient" id="Gradient_83rwf"]
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.25, 0.4375, 0.625, 0.8125, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0.25882354, 1, 0, 1.0131836, 0, 1, 0, 1.0048864, 1.0048864, 1, 0, 0, 1, 1, 1, 0, 1, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wanuo"]
+gradient = SubResource("Gradient_83rwf")
+
+[sub_resource type="Curve" id="Curve_ksw01"]
+_data = [Vector2(0, 0.26966298), 0.0, 0.0, 0, 0, Vector2(0.24000001, 0.8651686), 0.0, 0.0, 0, 0, Vector2(0.52, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_w1sme"]
+curve = SubResource("Curve_ksw01")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y6bgu"]
+lifetime_randomness = 0.4
+particle_flag_align_y = true
+particle_flag_disable_z = true
+angle_min = -139.99998
+angle_max = 480.00003
+direction = Vector3(0, -1, 0)
+spread = 35.0
+initial_velocity_min = 300.0
+initial_velocity_max = 650.0
+gravity = Vector3(0, 500, 0)
+scale_min = 0.19999999
+scale_max = 0.45
+scale_curve = SubResource("CurveTexture_w1sme")
+color_initial_ramp = SubResource("GradientTexture1D_wanuo")
+
+[node name="ConfettiScreenSpawn" type="GPUParticles2D"]
+material = SubResource("ShaderMaterial_hjekw")
+emitting = false
+amount = 75
+texture = ExtResource("1_y6bgu")
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.85
+randomness = 0.47
+process_material = SubResource("ParticleProcessMaterial_y6bgu")

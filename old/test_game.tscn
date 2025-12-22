@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dnldgmrqtm81v"]
+
+[ext_resource type="Script" uid="uid://dra58hxg6iijn" path="res://old/test_game.gd" id="1_2d1aj"]
+[ext_resource type="PackedScene" uid="uid://bnp40e3u1gnfo" path="res://levels/levels/level_1.tscn" id="1_x67xg"]
+[ext_resource type="PackedScene" uid="uid://cduvywq42xys" path="res://ui/menus/end_menu.tscn" id="2_2d1aj"]
+[ext_resource type="PackedScene" uid="uid://43ku0c7m8gqa" path="res://player/player.tscn" id="3_vkvqs"]
+[ext_resource type="PackedScene" uid="uid://byl640sm8s2b5" path="res://ui/menus/pause_menu_controller.tscn" id="4_0lb5u"]
+[ext_resource type="AudioStream" uid="uid://cgkhr5s5txcxx" path="res://common/music/EZDNB2 (CC-BY Of Far Different Nature).ogg" id="4_xn68f"]
+
+[node name="TestGame" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_2d1aj")
+
+[node name="Level 1" parent="." instance=ExtResource("1_x67xg")]
+unique_name_in_owner = true
+process_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("3_vkvqs")]
+unique_name_in_owner = true
+y_sort_enabled = true
+position = Vector2(3776, -3008)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="End Menu" parent="CanvasLayer" instance=ExtResource("2_2d1aj")]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+
+[node name="PauseMenuController" parent="CanvasLayer" instance=ExtResource("4_0lb5u")]
+visible = false
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_xn68f")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"

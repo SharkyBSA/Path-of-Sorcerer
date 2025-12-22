@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg1smyl3tn7tj"]
+
+[ext_resource type="Script" uid="uid://nsntgyfy0bhe" path="res://global/game_state_manager_test.gd" id="1_4d0pk"]
+
+[node name="GameStateManagerTest" type="Node"]
+script = ExtResource("1_4d0pk")
+metadata/_custom_type_script = "uid://chn632p0ax2c7"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 182.0
+offset_bottom = 95.0
+text = "Game"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+offset_left = 320.0
+offset_top = 64.0
+offset_right = 409.0
+offset_bottom = 95.0
+text = "Ecran titre"
+metadata/_edit_use_anchors_ = true

@@ -1,0 +1,62 @@
+[gd_scene load_steps=15 format=3 uid="uid://6vk43bg5hv2m"]
+
+[ext_resource type="PackedScene" uid="uid://cu2rb5dl4ljte" path="res://levels/rooms/room_a.tscn" id="1_oqbmf"]
+[ext_resource type="PackedScene" uid="uid://43ku0c7m8gqa" path="res://player/player.tscn" id="2_arrdh"]
+[ext_resource type="Script" uid="uid://cgh7p1ci7r8lw" path="res://pickups/item.gd" id="3_f0xav"]
+[ext_resource type="Resource" uid="uid://c4wh1vgu6lh72" path="res://pickups/healing_item_green_heart.tres" id="4_3vbl4"]
+[ext_resource type="Resource" uid="uid://028tppdurris" path="res://pickups/speed_item_eclair.tres" id="5_6r6vx"]
+[ext_resource type="PackedScene" uid="uid://80fwms4qyswm" path="res://mobs/shooting_mob.tscn" id="7_3vbl4"]
+[ext_resource type="PackedScene" uid="uid://wyt7eaje6cu7" path="res://pickups/chest/chest.tscn" id="7_f0xav"]
+[ext_resource type="PackedScene" uid="uid://bqgndsftdrxo" path="res://npc/pnj.tscn" id="8_3vbl4"]
+[ext_resource type="Script" uid="uid://dfk1horgdrrx7" path="res://npc/dialogue/dialog_item.gd" id="9_i507p"]
+[ext_resource type="Texture2D" uid="uid://d000xjtr4iqtk" path="res://npc/dialogue/emotion_regular.png" id="10_2602c"]
+[ext_resource type="PackedScene" uid="uid://b8hv6elhy11pr" path="res://levels/rooms/entrances/door.tscn" id="11_2602c"]
+
+[sub_resource type="Resource" id="Resource_l3001"]
+script = ExtResource("9_i507p")
+
+[sub_resource type="Resource" id="Resource_i507p"]
+script = ExtResource("9_i507p")
+text = "Hello stranger"
+
+[sub_resource type="Resource" id="Resource_2602c"]
+script = ExtResource("9_i507p")
+text = "Platipuf"
+
+[node name="TestRoom" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(-40, -54)
+
+[node name="RoomA" parent="." instance=ExtResource("1_oqbmf")]
+position = Vector2(40, -74)
+
+[node name="Chest" parent="." instance=ExtResource("7_f0xav")]
+position = Vector2(796, 142)
+_possible_pickups = Array[ExtResource("3_f0xav")]([ExtResource("4_3vbl4"), ExtResource("5_6r6vx")])
+pickup_amount = 2
+
+[node name="Player" parent="." instance=ExtResource("2_arrdh")]
+position = Vector2(1000, 388)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="ShootingMob" parent="." instance=ExtResource("7_3vbl4")]
+position = Vector2(373, 972)
+detection_distance = 0.0
+
+[node name="PNJ" parent="." instance=ExtResource("8_3vbl4")]
+position = Vector2(1328, 113)
+dialog_content = Array[ExtResource("9_i507p")]([SubResource("Resource_l3001"), SubResource("Resource_i507p"), SubResource("Resource_2602c")])
+
+[node name="Door" parent="." instance=ExtResource("11_2602c")]
+position = Vector2(488, 118)
+direction = 1
+
+[node name="Door2" parent="." instance=ExtResource("11_2602c")]
+position = Vector2(488, 246)
+direction = 1
+
+[node name="Door3" parent="." instance=ExtResource("11_2602c")]
+position = Vector2(1064, 502)
+
+[node name="Door4" parent="." instance=ExtResource("11_2602c")]
+position = Vector2(1192, 502)

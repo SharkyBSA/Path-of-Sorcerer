@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://by8oiap5g1b84"]
+
+[ext_resource type="PackedScene" uid="uid://cs55p4on85fs5" path="res://weapons/bullets/bullet.tscn" id="1_8b4h6"]
+[ext_resource type="Script" uid="uid://cse6r6xngccdr" path="res://weapons/bullets/bullet_scatter.gd" id="2_sa5a7"]
+
+[node name="BulletScatter" instance=ExtResource("1_8b4h6")]
+script = ExtResource("2_sa5a7")
+damage = 1.5

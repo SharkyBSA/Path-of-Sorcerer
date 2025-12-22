@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjmrhnsl7pvdj"]
+
+[ext_resource type="Theme" uid="uid://ck2b320oc408w" path="res://ui/menus/game_menu.tres" id="1_rjlam"]
+[ext_resource type="Script" uid="uid://bpp1mr2402enn" path="res://ui/menus/credits_menu.gd" id="2_0yh0p"]
+[ext_resource type="Shader" uid="uid://bsf1a25jxwlv1" path="res://common/shaders/blur_and_tint.gdshader" id="2_dmgud"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0yh0p"]
+shader = ExtResource("2_dmgud")
+shader_parameter/blur_amount = 0.400000019
+shader_parameter/tint = Color(0.19076231, 0.19076234, 0.19076231, 1)
+shader_parameter/tint_strength = 0.2000000095
+shader_parameter/saturation = 1.0
+
+[node name="CreditsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rjlam")
+script = ExtResource("2_0yh0p")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_0yh0p")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -745.875
+offset_top = -453.0
+offset_right = 745.875
+offset_bottom = 453.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Credits" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Thanks for playing ! 
+A game created by Sharky_BSA
+using the Godot Engine
+"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="TitleFont license" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 35
+text = "Bomb Sound Font under 1001Fonts Free For Personal Use License https://www.1001fonts.com/licenses/ffp.html
+"
+autowrap_mode = 3
+
+[node name="Godot license" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 35
+autowrap_mode = 3
+
+[node name="BackBtn" type="Button" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back"

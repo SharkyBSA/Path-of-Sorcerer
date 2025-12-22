@@ -1,0 +1,172 @@
+[gd_scene load_steps=13 format=3 uid="uid://c0i2gypp2yyrp"]
+
+[ext_resource type="Script" uid="uid://cwp1wiie106va" path="res://mobs/mob.gd" id="1_fgbma"]
+[ext_resource type="Texture2D" uid="uid://nohjoiah3jgr" path="res://mobs/sword_inactive.png" id="2_p7hwu"]
+[ext_resource type="AudioStream" uid="uid://dfc5tcrthtntk" path="res://mobs/hurt.wav" id="3_4p423"]
+[ext_resource type="AudioStream" uid="uid://cte8ddxd7o4de" path="res://mobs/kill.wav" id="4_cxx3d"]
+[ext_resource type="PackedScene" uid="uid://5ays6kuo0xio" path="res://common/shadow.tscn" id="4_il41e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxx3d"]
+radius = 34.0
+height = 126.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4p423"]
+radius = 550.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fgbma"]
+radius = 43.0
+height = 222.0
+
+[sub_resource type="Animation" id="Animation_4p423"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShadowRotationPoint:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p7hwu"]
+resource_name = "hit_player"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(90, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShadowRotationPoint:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(90, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fgbma"]
+resource_name = "hit_reset"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(90, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShadowRotationPoint:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(90, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4p423"]
+_data = {
+&"RESET": SubResource("Animation_4p423"),
+&"hit_player": SubResource("Animation_p7hwu"),
+&"hit_reset": SubResource("Animation_fgbma")
+}
+
+[node name="Mob" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 11
+motion_mode = 1
+script = ExtResource("1_fgbma")
+max_speed = 200.0
+acceleration = 800.0
+slow_distance = 250.0
+slow_factor = 0.7
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+visible = false
+z_index = 1
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_cxx3d")
+debug_color = Color(0.78039217, 0.16470589, 0.16470589, 0.41960785)
+
+[node name="PlayerDetectionArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+
+[node name="PlayerDetectionShape" type="CollisionShape2D" parent="PlayerDetectionArea"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_4p423")
+debug_color = Color(0, 0.6, 0.7019608, 0.41960785)
+
+[node name="HitPlayerArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitPlayerArea"]
+position = Vector2(42, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_fgbma")
+debug_color = Color(0, 0.89411765, 0.45882353, 0.41960785)
+
+[node name="HitTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.7
+
+[node name="HitAnimation" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_4p423")
+}
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_4p423")
+bus = &"Effects"
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_cxx3d")
+bus = &"Effects"
+
+[node name="ShadowRotationPoint" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Shadow" parent="ShadowRotationPoint" instance=ExtResource("4_il41e")]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_p7hwu")

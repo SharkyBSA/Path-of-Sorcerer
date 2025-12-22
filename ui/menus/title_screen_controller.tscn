@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7dktyrob6krl"]
+
+[ext_resource type="Theme" uid="uid://ck2b320oc408w" path="res://ui/menus/game_menu.tres" id="1_742w6"]
+[ext_resource type="Script" uid="uid://3ommolk8q33l" path="res://ui/menus/title_screen_controller.gd" id="2_gn1cq"]
+[ext_resource type="Texture2D" uid="uid://y22sv3lfxf33" path="res://common/game_over_sky.png" id="2_j327e"]
+[ext_resource type="PackedScene" uid="uid://7m5ksesggrhi" path="res://ui/menus/settings_menu.tscn" id="5_b13tl"]
+[ext_resource type="PackedScene" uid="uid://q0lekxftu5sj" path="res://ui/menus/title_screen.tscn" id="5_c7f12"]
+[ext_resource type="PackedScene" uid="uid://bjmrhnsl7pvdj" path="res://ui/menus/credits_menu.tscn" id="6_r8d8a"]
+
+[node name="Title Screen Controller" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_742w6")
+script = ExtResource("2_gn1cq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j327e")
+
+[node name="Title_screen" parent="." instance=ExtResource("5_c7f12")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="SettingsMenu" parent="." instance=ExtResource("5_b13tl")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="CreditsMenu" parent="." instance=ExtResource("6_r8d8a")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1

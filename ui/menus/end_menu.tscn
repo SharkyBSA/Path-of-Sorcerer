@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=3 uid="uid://cduvywq42xys"]
+
+[ext_resource type="Script" uid="uid://c0x23ely6gfap" path="res://ui/menus/end_menu.gd" id="1_4ksec"]
+[ext_resource type="Shader" uid="uid://bsf1a25jxwlv1" path="res://common/shaders/blur_and_tint.gdshader" id="1_bje0f"]
+[ext_resource type="Theme" uid="uid://ck2b320oc408w" path="res://ui/menus/game_menu.tres" id="1_fxliy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bje0f"]
+shader = ExtResource("1_bje0f")
+shader_parameter/blur_amount = 2.21200010507
+shader_parameter/tint = Color(0, 0, 0, 1)
+shader_parameter/tint_strength = 0.210000009975
+shader_parameter/saturation = 1.0
+
+[node name="End Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fxliy")
+script = ExtResource("1_4ksec")
+metadata/_edit_lock_ = true
+
+[node name="BlurBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_bje0f")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.0
+offset_top = -293.0
+offset_right = 312.0
+offset_bottom = 293.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="You Won" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 120
+text = "Victory !"
+horizontal_alignment = 1
+
+[node name="Temps" type="Label" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Time :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgain" type="Button" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Play again"
+
+[node name="GoToTitle" type="Button" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Go to title screen"
+
+[node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Quit"

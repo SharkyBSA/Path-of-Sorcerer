@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://dohb8151irsju"]
+
+[ext_resource type="PackedScene" uid="uid://cs55p4on85fs5" path="res://weapons/bullets/bullet.tscn" id="1_ntlj2"]
+[ext_resource type="Script" uid="uid://5kcc0vv7wv63" path="res://weapons/bullet_lightning.gd" id="2_1mw6o"]
+[ext_resource type="Texture2D" uid="uid://bygelf5gxjpwk" path="res://weapons/bullets/lightning_trail.png" id="3_53dnh"]
+[ext_resource type="Texture2D" uid="uid://6q8c06dxssv8" path="res://weapons/bullets/lightning.png" id="4_we1si"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5fnps"]
+size = Vector2(105, 10)
+
+[node name="BulletLightning" instance=ExtResource("1_ntlj2")]
+script = ExtResource("2_1mw6o")
+damage = 0.4
+
+[node name="BulletTrail" parent="." index="0"]
+position = Vector2(-90, 0)
+texture = ExtResource("3_53dnh")
+
+[node name="BulletBody" parent="." index="1"]
+texture = ExtResource("4_we1si")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(43.5, 0)
+shape = SubResource("RectangleShape2D_5fnps")

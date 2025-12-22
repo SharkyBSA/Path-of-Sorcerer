@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqgndsftdrxo"]
+
+[ext_resource type="Script" uid="uid://db0wc4y8thitb" path="res://npc/pnj.gd" id="1_1wuyl"]
+[ext_resource type="Texture2D" uid="uid://dvjpow1ete6qb" path="res://npc/sophia.png" id="1_d2ktv"]
+[ext_resource type="PackedScene" uid="uid://bae2i2ex4hl8a" path="res://npc/dialogue/pnj_dialog.tscn" id="3_sciqj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2ktv"]
+size = Vector2(121.75, 142.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sciqj"]
+radius = 52.0
+height = 166.0
+
+[node name="PNJ" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_1wuyl")
+dialog_scene = ExtResource("3_sciqj")
+pnj_sprite_texture = ExtResource("1_d2ktv")
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, -54)
+scale = Vector2(0.7, 0.7)
+shape = SubResource("RectangleShape2D_d2ktv")
+
+[node name="PnjSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -64)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_d2ktv")
+
+[node name="PlayerDetectionArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
+position = Vector2(0, -66)
+shape = SubResource("CapsuleShape2D_sciqj")
+debug_color = Color(0.0032831188, 0.65162253, 0, 0.41960785)
+
+[node name="DialogLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true

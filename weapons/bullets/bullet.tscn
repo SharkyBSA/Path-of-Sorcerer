@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://cs55p4on85fs5"]
+
+[ext_resource type="Script" uid="uid://byqqd01yqc27l" path="res://weapons/bullets/bullet.gd" id="1_0dwqp"]
+[ext_resource type="Texture2D" uid="uid://dxe2pniv6kdn4" path="res://weapons/bullets/fire_trail.png" id="2_7gn5l"]
+[ext_resource type="Texture2D" uid="uid://bgn8fvhkjniwn" path="res://weapons/bullets/fire.png" id="3_ftu3o"]
+[ext_resource type="AudioStream" uid="uid://baatxna4415hc" path="res://weapons/bullets/hit_fire.wav" id="4_7gn5l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c6hop"]
+radius = 16.0
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_0dwqp")
+damage = 2.5
+
+[node name="BulletTrail" type="Sprite2D" parent="."]
+position = Vector2(-34, 0)
+texture = ExtResource("2_7gn5l")
+
+[node name="BulletBody" type="Sprite2D" parent="."]
+texture = ExtResource("3_ftu3o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c6hop")
+
+[node name="ImpactSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_7gn5l")
+bus = &"Effects"

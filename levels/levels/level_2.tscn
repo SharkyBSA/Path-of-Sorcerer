@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://caf0gdomv72sa"]
+
+[ext_resource type="Script" uid="uid://bgky4p08582ag" path="res://levels/levels/level_2.gd" id="1_c2jom"]
+[ext_resource type="PackedScene" uid="uid://wdey00p3syru" path="res://levels/background/background_blue_sky.tscn" id="2_ol442"]
+[ext_resource type="PackedScene" uid="uid://cu2rb5dl4ljte" path="res://levels/rooms/room_a.tscn" id="3_jpger"]
+[ext_resource type="PackedScene" uid="uid://bqwac15wys7j3" path="res://levels/rooms/teleporter/teleporter.tscn" id="4_mvyf0"]
+
+[node name="Level 2" type="Node2D"]
+script = ExtResource("1_c2jom")
+_player_spawn = Vector2(448, 320)
+metadata/_custom_type_script = "uid://ci5pogo08frc5"
+
+[node name="BackgroundBlueSky" parent="." instance=ExtResource("2_ol442")]
+
+[node name="RoomA" parent="." instance=ExtResource("3_jpger")]
+metadata/_edit_lock_ = true
+
+[node name="Teleporter" parent="RoomA" instance=ExtResource("4_mvyf0")]
+unique_name_in_owner = true
+position = Vector2(832, 384)

@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3 uid="uid://bqwac15wys7j3"]
+
+[ext_resource type="Texture2D" uid="uid://cwurq7yvv5xdu" path="res://levels/rooms/teleporter/teleporter_base.png" id="1_kpnqv"]
+[ext_resource type="Script" uid="uid://chwbfcc2pprnq" path="res://levels/rooms/teleporter/teleporter.gd" id="1_ky83x"]
+[ext_resource type="Texture2D" uid="uid://cb5e2w7i8756i" path="res://levels/rooms/teleporter/teleporter_beam_green.png" id="2_ky83x"]
+[ext_resource type="Texture2D" uid="uid://bvq8qshecx2by" path="res://levels/rooms/teleporter/teleporter_particle_green.png" id="4_ug7tr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_111yd"]
+size = Vector2(50, 50)
+
+[sub_resource type="Curve" id="Curve_hdtea"]
+_data = [Vector2(0, 0.49350643), 0.0, 0.0, 0, 0, Vector2(0.35135135, 0.50405836), -0.09938002, -0.09938002, 0, 0, Vector2(0.94208485, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ijng7"]
+curve = SubResource("Curve_hdtea")
+
+[sub_resource type="Curve" id="Curve_wcjuf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.27027026, 0.99999994), 0.0, 0.0, 0, 0, Vector2(0.9652509, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ubud7"]
+curve_y = SubResource("Curve_wcjuf")
+
+[sub_resource type="CurveTexture" id="CurveTexture_ug7tr"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mn7ks"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(50, 20, 1)
+direction = Vector3(0, -1, 0)
+spread = 5.0
+directional_velocity_min = -40.000015
+directional_velocity_max = -40.000015
+directional_velocity_curve = SubResource("CurveXYZTexture_ubud7")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 0.19999999
+alpha_curve = SubResource("CurveTexture_ijng7")
+emission_curve = SubResource("CurveTexture_ug7tr")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = -2.2351742e-08
+
+[node name="Teleporter" type="Area2D"]
+script = ExtResource("1_ky83x")
+
+[node name="TeleporterBase" type="Sprite2D" parent="."]
+position = Vector2(0, 128)
+texture = ExtResource("1_kpnqv")
+
+[node name="TeleporterBeamGreen" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 128)
+texture = ExtResource("2_ky83x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 128)
+shape = SubResource("RectangleShape2D_111yd")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 130)
+amount = 15
+texture = ExtResource("4_ug7tr")
+lifetime = 5.0
+randomness = 0.7
+process_material = SubResource("ParticleProcessMaterial_mn7ks")

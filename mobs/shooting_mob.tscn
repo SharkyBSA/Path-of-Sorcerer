@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://80fwms4qyswm"]
+
+[ext_resource type="Texture2D" uid="uid://cjch4itgn8lir" path="res://mobs/shield_inactive.png" id="1_07nfh"]
+[ext_resource type="Script" uid="uid://7nis3dytr2ns" path="res://mobs/shooting_mob.gd" id="1_ujdf2"]
+[ext_resource type="PackedScene" uid="uid://5ays6kuo0xio" path="res://common/shadow.tscn" id="2_oug3g"]
+[ext_resource type="AudioStream" uid="uid://dfc5tcrthtntk" path="res://mobs/hurt.wav" id="3_cjbmp"]
+[ext_resource type="AudioStream" uid="uid://cte8ddxd7o4de" path="res://mobs/kill.wav" id="4_iboym"]
+[ext_resource type="PackedScene" uid="uid://djnviqciekg0m" path="res://mobs/mob_weapon.tscn" id="5_iboym"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ujdf2"]
+radius = 35.0
+height = 96.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cjbmp"]
+radius = 550.0
+
+[node name="ShootingMob" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_ujdf2")
+max_speed = 250.0
+acceleration = 400.0
+min_target_distance = 450.0
+max_target_distance = 500.0
+shots_per_sec = 0.5
+max_health = 8.0
+detection_distance = 550.0
+lose_distance = 650.0
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+z_index = 1
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ujdf2")
+debug_color = Color(0.78039217, 0.16470589, 0.16470589, 0.41960785)
+
+[node name="Shadow" parent="." instance=ExtResource("2_oug3g")]
+
+[node name="BodySprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("1_07nfh")
+
+[node name="PlayerDetectionArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="PlayerDetectionShape" type="CollisionShape2D" parent="PlayerDetectionArea"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_cjbmp")
+debug_color = Color(0, 0.6, 0.7019608, 0.41960785)
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_cjbmp")
+bus = &"Effects"
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_iboym")
+bus = &"Effects"
+
+[node name="ShootTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="MobWeapon" parent="." instance=ExtResource("5_iboym")]
+unique_name_in_owner = true

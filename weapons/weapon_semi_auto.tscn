@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bngctva7f3mni"]
+
+[ext_resource type="Script" uid="uid://r1cybmvfu7us" path="res://weapons/weapon_semi_auto.gd" id="1_fni1p"]
+[ext_resource type="PackedScene" uid="uid://cs55p4on85fs5" path="res://weapons/bullets/bullet.tscn" id="2_4u54a"]
+[ext_resource type="AudioStream" uid="uid://8k3b4dtgtm7h" path="res://weapons/shoot_fire.wav" id="2_ffde8"]
+[ext_resource type="Texture2D" uid="uid://cidumvrrnn3xt" path="res://player/hand_fire_closed.png" id="2_r7hw5"]
+
+[node name="Weapon_semi_auto" type="Node2D" node_paths=PackedStringArray("shoot_sound")]
+script = ExtResource("1_fni1p")
+shots_per_secs = 1.2
+max_speed = 1300.0
+max_range = 470.0
+spread = 0.03490658503988659
+shoot_audio_stream = ExtResource("2_ffde8")
+bullet_scene = ExtResource("2_4u54a")
+shoot_sound = NodePath("ShootSound")
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ffde8")
+bus = &"Effects"
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.8333333333333334
+
+[node name="HandFireClosed2" type="Sprite2D" parent="."]
+position = Vector2(0, 27)
+texture = ExtResource("2_r7hw5")
+flip_v = true
+
+[node name="HandFireClosed" type="Sprite2D" parent="."]
+position = Vector2(0, -27)
+texture = ExtResource("2_r7hw5")
