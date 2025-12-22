@@ -21,14 +21,13 @@ var dialog_index : int = 0:
 	set(val):
 		dialog_index = clampi(val,0,dialog_content.size()-1)
 		
-var text_tween : Tween = null
+var text_tween : Tween 
 
 func _ready() -> void:
-	if Engine.is_editor_hint():
+	if not Engine.is_editor_hint():
+		text_tween = create_tween()
 		go_to_dialog_item(0)
-	
-	text_tween = create_tween()
-	next_button.pressed.connect(_on_next_button_pressed)
+		next_button.pressed.connect(_on_next_button_pressed)
 	
 func go_to_dialog_item(index : int)->void:
 	dialog_index=index
@@ -54,7 +53,7 @@ func is_last_entry()->bool:
 	return dialog_index==dialog_content.size()-1
 
 func _on_next_button_pressed()->void:
-	if text_tween.is_running():
+	if text_tween !=null && text_tween.is_running():
 		text_tween.custom_step(INF)
 		return
 
