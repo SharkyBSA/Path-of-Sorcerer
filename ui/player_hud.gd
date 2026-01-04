@@ -25,12 +25,12 @@ const WEAPON_ICONS : Dictionary[Player.WeaponType,Dictionary]={
 		"inactive":LIGHTNING_ICON_INACTIVE},
 }
 var _weapon_selection_bar_content : Array[Player.WeaponType]
-var _selected_weapon_index : int = -1
+var _selected_weapon_index : int = -1:
+	set = set_selected_weapon_index
 
 func _ready() -> void:
-	_selected_weapon_index=1
-	set_weapon_selection_bar_content([Weapon_Charged.new(),Weapon_FullAuto.new()])
-
+	clear_weapon_selection_bar()
+		
 func set_health_bar_value(val : int)->void:
 	_health_bar.value=val
 
@@ -39,8 +39,20 @@ func set_health_bar_max_value(val: int)->void:
 
 func clear_weapon_selection_bar()->void:
 	for child in _weapon_selection_bar.get_children():
+		_weapon_selection_bar.remove_child(child)
 		child.queue_free()
 	_weapon_selection_bar_content.clear()
+
+func set_selected_weapon_index(weapon_index: int)->void:
+	if (weapon_index<0 || weapon_index>=_weapon_selection_bar_content.size()):
+		return
+		
+	var previously_selected_weapon_index : TextureRect = _weapon_selection_bar.get_child(_selected_weapon_index)
+	previously_selected_weapon_index.texture= WEAPON_ICONS[_weapon_selection_bar_content[_selected_weapon_index]]["inactive"]
+
+	_selected_weapon_index=weapon_index
+	var selected_weapon_texture_rect : TextureRect = _weapon_selection_bar.get_child(weapon_index)
+	selected_weapon_texture_rect.texture=WEAPON_ICONS[_weapon_selection_bar_content[_selected_weapon_index]]["active"]
 
 func set_weapon_selection_bar_content(player_weapons : Array[Weapon])->void:
 	clear_weapon_selection_bar()

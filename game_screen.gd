@@ -25,7 +25,9 @@ func _ready() -> void:
 	
 	player.health_changed.connect(player_hud.set_health_bar_value)
 	player.max_health_changed.connect(player_hud.set_health_bar_max_value)
-
+	player.weapons_changed.connect(player_hud.set_weapon_selection_bar_content)
+	player.weapon_index_changed.connect(player_hud.set_selected_weapon_index)
+	
 	var first_level = level_graph.load_level(0)
 	if first_level == null:
 		print("Oups pas de level à l'initialisation du GameScreen")

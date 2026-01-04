@@ -70,6 +70,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		current_weapon_index+=1
 	if event.is_action_pressed("change_weapon_down"):
 		current_weapon_index-=1
+	if event is InputEventKey && event.is_released() :
+		if event.keycode == KEY_ENTER:
+			add_weapon(WeaponType.CHARGED)
+		
 
 func die()->void:
 	_collision_shape_2d.set_deferred("disabled",true)
@@ -79,7 +83,23 @@ func die()->void:
 	died.emit()
 
 func add_weapon(_new_weapon_type : WeaponType)->void:
-	#var new_weapon : Weapon
+	var weapon_to_add : Weapon
+	match _new_weapon_type:
+		WeaponType.SEMI_AUTO:
+			weapon_to_add=WEAPON_SEMI_AUTO
+		WeaponType.SHOTGUN:
+			weapon_to_add=WEAPON_SHOTGUN
+		WeaponType.CHARGED:
+			weapon_to_add=WEAPON_CHARGED
+		WeaponType.FULL_AUTO:
+			weapon_to_add=WEAPON_FULL_AUTO
+		_: 
+			return
+			
+	if weapon_to_add in weapons:
+		return
+		
+	weapons.append(weapon_to_add)
 	weapons_changed.emit(weapons)
 
 func change_weapon(new_weapon_index :int)->void:
