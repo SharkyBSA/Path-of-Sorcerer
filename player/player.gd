@@ -13,7 +13,7 @@ var WEAPON_SHOTGUN : Weapon_Shotgun = preload("uid://cqyr28ud7xfyy").instantiate
 var WEAPON_CHARGED : Weapon_Charged = preload("uid://wjydyg84ucq8").instantiate()
 var WEAPON_FULL_AUTO : Weapon_FullAuto = preload("uid://t03upx3bu80l").instantiate()
 
-var weapons : Array[Weapon] = [WEAPON_SEMI_AUTO,WEAPON_SHOTGUN]
+var weapons : Array[Weapon] = [WEAPON_SEMI_AUTO]
 var current_weapon_index : int = -1 :
 	set = change_weapon
 

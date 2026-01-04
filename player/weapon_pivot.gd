@@ -2,7 +2,6 @@ extends Node2D
 
 var is_controller_used = false
 
-
 func _physics_process(_delta: float) -> void:
 	if is_controller_used:
 		_control_controller()
