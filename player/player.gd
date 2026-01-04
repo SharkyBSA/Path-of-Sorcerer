@@ -13,7 +13,7 @@ var weapon_shotgun : Weapon_Shotgun = preload("uid://cqyr28ud7xfyy").instantiate
 var weapon_charged : Weapon_Charged = preload("uid://wjydyg84ucq8").instantiate()
 var weapon_full_auto : Weapon_FullAuto = preload("uid://t03upx3bu80l").instantiate()
 
-var weapons : Array[Weapon] = [weapon_charged]
+var weapons : Array[Weapon] = [weapon_semi_auto]
 var current_weapon_index : int = -1 :
 	set = change_weapon
 
@@ -70,10 +70,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		current_weapon_index+=1
 	if event.is_action_pressed("change_weapon_down"):
 		current_weapon_index-=1
-	if event is InputEventKey && event.is_released() :
-		if event.keycode == KEY_ENTER:
-			add_weapon(WeaponType.CHARGED)
-		
 
 func die()->void:
 	_collision_shape_2d.set_deferred("disabled",true)
