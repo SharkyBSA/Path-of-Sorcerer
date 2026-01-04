@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://43ku0c7m8gqa"]
+[gd_scene load_steps=17 format=3 uid="uid://43ku0c7m8gqa"]
 
 [ext_resource type="Script" uid="uid://bml0yexgmjr54" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://bw03btxpkxde4" path="res://player/godot_bottom.png" id="1_rkbax"]
 [ext_resource type="PackedScene" uid="uid://5ays6kuo0xio" path="res://common/shadow.tscn" id="2_g1dw6"]
 [ext_resource type="Script" uid="uid://b310rakud4l8v" path="res://player/player_sprite.gd" id="3_yw30f"]
 [ext_resource type="Script" uid="uid://djmlb8fcjgvng" path="res://player/weapon_pivot.gd" id="5_boad6"]
-[ext_resource type="PackedScene" uid="uid://bngctva7f3mni" path="res://weapons/player_weapons/semi_auto/weapon_semi_auto.tscn" id="7_wodsf"]
 [ext_resource type="AudioStream" uid="uid://c6bk7awsqnbt8" path="res://player/pain_01.wav" id="11_wodsf"]
 [ext_resource type="AudioStream" uid="uid://deol7mqpv4xhy" path="res://player/pain_02.wav" id="12_32hag"]
 [ext_resource type="AudioStream" uid="uid://bv2sasgvsrp4i" path="res://player/pain_03.wav" id="13_tqiix"]
@@ -59,8 +58,6 @@ script = ExtResource("5_boad6")
 [node name="WeaponAnchor" type="Marker2D" parent="WeaponPivot"]
 unique_name_in_owner = true
 position = Vector2(70, 0)
-
-[node name="Weapon_semi_auto" parent="WeaponPivot/WeaponAnchor" instance=ExtResource("7_wodsf")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

@@ -8,12 +8,12 @@ class_name Player extends CharacterBody2D
 
 enum WeaponType {SEMI_AUTO,SHOTGUN,CHARGED,FULL_AUTO}
 
-var WEAPON_SEMI_AUTO : Weapon_SemiAuto = preload("uid://bngctva7f3mni").instantiate()
-var WEAPON_SHOTGUN : Weapon_Shotgun = preload("uid://cqyr28ud7xfyy").instantiate()
-var WEAPON_CHARGED : Weapon_Charged = preload("uid://wjydyg84ucq8").instantiate()
-var WEAPON_FULL_AUTO : Weapon_FullAuto = preload("uid://t03upx3bu80l").instantiate()
+var weapon_semi_auto : Weapon_SemiAuto = preload("uid://bngctva7f3mni").instantiate()
+var weapon_shotgun : Weapon_Shotgun = preload("uid://cqyr28ud7xfyy").instantiate()
+var weapon_charged : Weapon_Charged = preload("uid://wjydyg84ucq8").instantiate()
+var weapon_full_auto : Weapon_FullAuto = preload("uid://t03upx3bu80l").instantiate()
 
-var weapons : Array[Weapon] = [WEAPON_SEMI_AUTO]
+var weapons : Array[Weapon] = [weapon_charged]
 var current_weapon_index : int = -1 :
 	set = change_weapon
 
@@ -86,13 +86,13 @@ func add_weapon(_new_weapon_type : WeaponType)->void:
 	var weapon_to_add : Weapon
 	match _new_weapon_type:
 		WeaponType.SEMI_AUTO:
-			weapon_to_add=WEAPON_SEMI_AUTO
+			weapon_to_add=weapon_semi_auto
 		WeaponType.SHOTGUN:
-			weapon_to_add=WEAPON_SHOTGUN
+			weapon_to_add=weapon_shotgun
 		WeaponType.CHARGED:
-			weapon_to_add=WEAPON_CHARGED
+			weapon_to_add=weapon_charged
 		WeaponType.FULL_AUTO:
-			weapon_to_add=WEAPON_FULL_AUTO
+			weapon_to_add=weapon_full_auto
 		_: 
 			return
 			

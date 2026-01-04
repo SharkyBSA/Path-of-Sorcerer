@@ -17,9 +17,10 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
-		particles.emitting =true
+		particles.emitting=true
 	elif event.is_action_released("shoot"):
 		particles.emitting=false
+		shoot()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("shoot"):
@@ -28,20 +29,22 @@ func _physics_process(delta: float) -> void:
 		var particle_properties : ParticleProcessMaterial = particles.process_material
 		particle_properties.initial_velocity_min=0.7*particle_max_velocity*charge_ratio
 		particle_properties.initial_velocity_max=1.3*particle_max_velocity*charge_ratio
-	elif current_charge_time>0:
-		shoot()
+
 	
 func shoot()->void:
-	if current_charge_time >min_charge_time:
-		var bullet : Bullet = bullet_scene.instantiate()
-		var charge_ratio = current_charge_time/max_charge_time
-		bullet.damage*= charge_ratio
-		bullet.scale= Vector2.ONE*2*charge_ratio
-		bullet.global_rotation = global_rotation +randf_range(-spread/2,spread/2)
-		bullet.global_position = global_position
-		bullet.max_range = max_range
-		bullet.speed =  max_speed
-		get_tree().current_scene.add_child(bullet)
-		shoot_sound.play()
+	var can_shoot : bool = current_charge_time>min_charge_time
+	
+	if not can_shoot: 
+		return
 		
+	var bullet : Bullet = bullet_scene.instantiate()
+	var charge_ratio = current_charge_time/max_charge_time
+	bullet.damage*= charge_ratio
+	bullet.scale= Vector2.ONE*2*charge_ratio
+	bullet.global_rotation = global_rotation +randf_range(-spread/2,spread/2)
+	bullet.global_position = global_position
+	bullet.max_range = max_range
+	bullet.speed =  max_speed
+	get_tree().current_scene.add_child(bullet)
+	shoot_sound.play()
 	current_charge_time=0.0
