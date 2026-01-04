@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://wjydyg84ucq8"]
 
 [ext_resource type="Texture2D" uid="uid://djnqskxeihg82" path="res://player/hand_ice.png" id="1_cl22y"]
-[ext_resource type="Script" uid="uid://fab1wer1tqr3" path="res://weapons/weapon_charged.gd" id="1_t8j6h"]
-[ext_resource type="AudioStream" uid="uid://b06w3ol0nwhi5" path="res://weapons/shoot_ice.wav" id="2_hmeim"]
+[ext_resource type="Script" uid="uid://fab1wer1tqr3" path="res://weapons/player_weapons/charged/weapon_charged.gd" id="1_t8j6h"]
+[ext_resource type="AudioStream" uid="uid://b06w3ol0nwhi5" path="res://weapons/player_weapons/charged/shoot_ice.wav" id="2_hmeim"]
 [ext_resource type="PackedScene" uid="uid://00sswa2eo122" path="res://weapons/bullets/bullet_ice.tscn" id="3_hmeim"]
 [ext_resource type="Texture2D" uid="uid://bysndqjm011oi" path="res://ui/weapon_icons/ice_icon.png" id="5_mqs4b"]
 

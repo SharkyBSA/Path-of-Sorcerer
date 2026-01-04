@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bngctva7f3mni"]
 
-[ext_resource type="Script" uid="uid://r1cybmvfu7us" path="res://weapons/weapon_semi_auto.gd" id="1_fni1p"]
+[ext_resource type="Script" uid="uid://r1cybmvfu7us" path="res://weapons/player_weapons/semi_auto/weapon_semi_auto.gd" id="1_fni1p"]
 [ext_resource type="PackedScene" uid="uid://cs55p4on85fs5" path="res://weapons/bullets/bullet.tscn" id="2_4u54a"]
-[ext_resource type="AudioStream" uid="uid://8k3b4dtgtm7h" path="res://weapons/shoot_fire.wav" id="2_ffde8"]
+[ext_resource type="AudioStream" uid="uid://8k3b4dtgtm7h" path="res://weapons/player_weapons/shotgun/shoot_fire.wav" id="2_ffde8"]
 [ext_resource type="Texture2D" uid="uid://cidumvrrnn3xt" path="res://player/hand_fire_closed.png" id="2_r7hw5"]
 
 [node name="Weapon_semi_auto" type="Node2D" node_paths=PackedStringArray("shoot_sound")]

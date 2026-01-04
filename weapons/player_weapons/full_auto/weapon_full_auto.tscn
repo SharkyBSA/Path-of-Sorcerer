@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://t03upx3bu80l"]
 
-[ext_resource type="Script" uid="uid://b3i1mn7rkkjwv" path="res://weapons/weapon_full_auto.gd" id="1_uf0ht"]
+[ext_resource type="Script" uid="uid://b3i1mn7rkkjwv" path="res://weapons/player_weapons/full_auto/weapon_full_auto.gd" id="1_uf0ht"]
 [ext_resource type="AudioStream" uid="uid://56dws0tsoa3j" path="res://weapons/bullets/hit_lightning_loop.wav" id="2_hbdn2"]
 [ext_resource type="Texture2D" uid="uid://6q8c06dxssv8" path="res://weapons/bullets/lightning.png" id="2_sikb7"]
 [ext_resource type="Texture2D" uid="uid://c3x625j6kshod" path="res://player/hand_lightning.png" id="3_hbdn2"]

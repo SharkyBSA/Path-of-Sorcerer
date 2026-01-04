@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cqyr28ud7xfyy"]
 
-[ext_resource type="Script" uid="uid://b48et2jufk7lw" path="res://weapons/weapon_shotgun.gd" id="1_qtvps"]
+[ext_resource type="Script" uid="uid://b48et2jufk7lw" path="res://weapons/player_weapons/shotgun/weapon_shotgun.gd" id="1_qtvps"]
 [ext_resource type="Texture2D" uid="uid://dekkcmj408pvt" path="res://player/hand_fire.png" id="2_c0um7"]
-[ext_resource type="AudioStream" uid="uid://8k3b4dtgtm7h" path="res://weapons/shoot_fire.wav" id="2_si517"]
+[ext_resource type="AudioStream" uid="uid://8k3b4dtgtm7h" path="res://weapons/player_weapons/shotgun/shoot_fire.wav" id="2_si517"]
 [ext_resource type="PackedScene" uid="uid://by8oiap5g1b84" path="res://weapons/bullets/bullet_scatter.tscn" id="3_qtvps"]
 
 [node name="weapon shotgun" type="Node2D" node_paths=PackedStringArray("shoot_sound")]

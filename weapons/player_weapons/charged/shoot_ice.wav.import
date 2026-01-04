@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b06w3ol0nwhi5"
-path="res://.godot/imported/shoot_ice.wav-0cdd5b512c7bec53123a1d7c2f5a0240.sample"
+path="res://.godot/imported/shoot_ice.wav-664426e57cc71acb4b76cf28dd854894.sample"
 
 [deps]
 
-source_file="res://weapons/shoot_ice.wav"
-dest_files=["res://.godot/imported/shoot_ice.wav-0cdd5b512c7bec53123a1d7c2f5a0240.sample"]
+source_file="res://weapons/player_weapons/charged/shoot_ice.wav"
+dest_files=["res://.godot/imported/shoot_ice.wav-664426e57cc71acb4b76cf28dd854894.sample"]
 
 [params]
 
