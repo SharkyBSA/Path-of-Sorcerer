@@ -66,6 +66,7 @@ scale = Vector2(1.0000001, 1.0000001)
 emitting = false
 texture = ExtResource("2_sikb7")
 lifetime = 0.05
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_yhic6")
 
 [node name="ParticlesRight" type="GPUParticles2D" parent="."]
@@ -75,4 +76,5 @@ scale = Vector2(1.0000001, 1.0000001)
 emitting = false
 texture = ExtResource("2_sikb7")
 lifetime = 0.05
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_pv4mk")

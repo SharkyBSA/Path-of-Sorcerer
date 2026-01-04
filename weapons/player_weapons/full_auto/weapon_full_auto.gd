@@ -32,10 +32,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		shoot_sound.stop()
 
 func _physics_process(_delta: float) -> void:
-	particle_left_material.angle_min = -20  -rad_to_deg(global_rotation)
-	particle_left_material.angle_max = -20  -rad_to_deg(global_rotation)
-	particle_right_material.angle_min = +20 -rad_to_deg(global_rotation)
-	particle_right_material.angle_max = +20 -rad_to_deg(global_rotation)
 	if Input.is_action_pressed("shoot"):
 		shoot()
 
