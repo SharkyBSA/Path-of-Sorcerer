@@ -6,12 +6,13 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bje0f"]
 shader = ExtResource("1_bje0f")
-shader_parameter/blur_amount = 2.21200010507
+shader_parameter/blur_amount = 2.50000011875
 shader_parameter/tint = Color(0, 0, 0, 1)
 shader_parameter/tint_strength = 0.210000009975
 shader_parameter/saturation = 1.0
 
 [node name="End Menu" type="Control"]
+z_index = 50
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

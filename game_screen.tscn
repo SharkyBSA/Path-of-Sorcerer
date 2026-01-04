@@ -33,6 +33,9 @@ scale = Vector2(0.99999994, 0.99999994)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("7_6mti6")]
+unique_name_in_owner = true
+
 [node name="End Menu" parent="CanvasLayer" instance=ExtResource("2_j7yda")]
 unique_name_in_owner = true
 process_mode = 2
@@ -40,9 +43,6 @@ visible = false
 
 [node name="PauseMenuController" parent="CanvasLayer" instance=ExtResource("3_lxtpa")]
 visible = false
-
-[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("7_6mti6")]
-unique_name_in_owner = true
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
