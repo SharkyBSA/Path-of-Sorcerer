@@ -8,22 +8,24 @@ class_name GameScreen extends Node2D
 
 @onready var player: Player = %Player
 @onready var end_menu: EndMenu = %"End Menu"
+@onready var player_hud : PlayerHUD = %PlayerHUD
 
 var current_level : Level 
 
 func _ready() -> void:
 	player.died.connect(func()->void:
-		print("Player died")
 		get_tree().change_scene_to_file(GameStateManager.get_new_state(GameStateManager.TITLE_SCREEN))
 		)
 	end_menu.go_to_title.connect(func()->void:
 		get_tree().change_scene_to_file(GameStateManager.get_new_state(GameStateManager.TITLE_SCREEN))
 		)
 	end_menu.play_again.connect(func()->void:
-		print("play_again")
 		get_tree().reload_current_scene()
 		)
-		
+	
+	player.health_changed.connect(player_hud.set_health_bar_value)
+	player.max_health_changed.connect(player_hud.set_health_bar_max_value)
+
 	var first_level = level_graph.load_level(0)
 	if first_level == null:
 		print("Oups pas de level à l'initialisation du GameScreen")

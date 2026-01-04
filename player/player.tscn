@@ -1,12 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://43ku0c7m8gqa"]
+[gd_scene load_steps=18 format=3 uid="uid://43ku0c7m8gqa"]
 
 [ext_resource type="Script" uid="uid://bml0yexgmjr54" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://bw03btxpkxde4" path="res://player/godot_bottom.png" id="1_rkbax"]
 [ext_resource type="PackedScene" uid="uid://5ays6kuo0xio" path="res://common/shadow.tscn" id="2_g1dw6"]
 [ext_resource type="Script" uid="uid://b310rakud4l8v" path="res://player/player_sprite.gd" id="3_yw30f"]
 [ext_resource type="Script" uid="uid://djmlb8fcjgvng" path="res://player/weapon_pivot.gd" id="5_boad6"]
-[ext_resource type="Texture2D" uid="uid://206pnoc2labm" path="res://ui/bars/health_point.png" id="5_hg6s5"]
-[ext_resource type="PackedScene" uid="uid://bngctva7f3mni" path="res://weapons/weapon_semi_auto.tscn" id="7_wodsf"]
+[ext_resource type="PackedScene" uid="uid://bngctva7f3mni" path="res://weapons/player_weapons/semi_auto/weapon_semi_auto.tscn" id="7_wodsf"]
 [ext_resource type="AudioStream" uid="uid://c6bk7awsqnbt8" path="res://player/pain_01.wav" id="11_wodsf"]
 [ext_resource type="AudioStream" uid="uid://deol7mqpv4xhy" path="res://player/pain_02.wav" id="12_32hag"]
 [ext_resource type="AudioStream" uid="uid://bv2sasgvsrp4i" path="res://player/pain_03.wav" id="13_tqiix"]
@@ -19,29 +18,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yw30f"]
 radius = 31.0
 height = 82.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8t03j"]
-bg_color = Color(0.15294118, 0.15294118, 0.15294118, 1)
-border_width_left = 7
-border_width_top = 7
-border_width_right = 7
-border_width_bottom = 7
-border_color = Color(0.0006938975, 0.00069389783, 0.00069389667, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-expand_margin_left = 7.0
-expand_margin_top = 7.0
-expand_margin_right = 7.0
-expand_margin_bottom = 7.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ieo8"]
-texture = ExtResource("5_hg6s5")
-
-[sub_resource type="Theme" id="Theme_ebec5"]
-ProgressBar/styles/background = SubResource("StyleBoxFlat_8t03j")
-ProgressBar/styles/fill = SubResource("StyleBoxTexture_2ieo8")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_65viv"]
 streams_count = 5
@@ -74,17 +50,6 @@ position = Vector2(0, -44)
 texture = ExtResource("1_rkbax")
 script = ExtResource("3_yw30f")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-unique_name_in_owner = true
-z_index = 1
-offset_left = -65.0
-offset_top = -153.0
-offset_right = 65.0
-offset_bottom = -126.0
-theme = SubResource("Theme_ebec5")
-value = 50.0
-show_percentage = false
-
 [node name="WeaponPivot" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -44)
@@ -92,10 +57,10 @@ rotation = 7.908288
 script = ExtResource("5_boad6")
 
 [node name="WeaponAnchor" type="Marker2D" parent="WeaponPivot"]
+unique_name_in_owner = true
 position = Vector2(70, 0)
 
-[node name="Weapon" parent="WeaponPivot/WeaponAnchor" instance=ExtResource("7_wodsf")]
-unique_name_in_owner = true
+[node name="Weapon_semi_auto" parent="WeaponPivot/WeaponAnchor" instance=ExtResource("7_wodsf")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

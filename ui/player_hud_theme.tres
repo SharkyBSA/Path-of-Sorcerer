@@ -1,0 +1,33 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://nfj3a3ko5tjy"]
+
+[ext_resource type="Texture2D" uid="uid://206pnoc2labm" path="res://ui/bars/health_point.png" id="1_ntpju"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ntpju"]
+content_margin_left = 0.0
+content_margin_top = 15.0
+content_margin_right = 1.0
+content_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8t03j"]
+bg_color = Color(0.15294118, 0.15294118, 0.15294118, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0.0006938975, 0.00069389783, 0.00069389667, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 7.0
+expand_margin_top = 7.0
+expand_margin_right = 7.0
+expand_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ieo8"]
+texture = ExtResource("1_ntpju")
+
+[resource]
+PanelContainer/styles/panel = SubResource("StyleBoxEmpty_ntpju")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_8t03j")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_2ieo8")

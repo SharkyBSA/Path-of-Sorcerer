@@ -2,6 +2,7 @@ extends Node2D
 
 var is_controller_used = false
 
+
 func _physics_process(_delta: float) -> void:
 	if is_controller_used:
 		_control_controller()
@@ -9,11 +10,14 @@ func _physics_process(_delta: float) -> void:
 		_control_mouse()
 		
 func _unhandled_input(event: InputEvent) -> void:
+	check_keyboard_or_controller(event)
+	
+func check_keyboard_or_controller(event : InputEvent)->void:
 	if event is InputEventMouse or event is InputEventKey:
 		is_controller_used = false
 	elif event is InputEventJoypadButton or event is InputEventJoypadMotion:
 		is_controller_used = true
-
+		
 func _control_mouse()->void:
 	var direction_to_mouse = global_position.direction_to(get_global_mouse_position())
 	global_rotation = direction_to_mouse.angle()

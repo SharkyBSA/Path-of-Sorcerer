@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bwlgq3t0fdb61"]
+[gd_scene load_steps=11 format=3 uid="uid://bwlgq3t0fdb61"]
 
 [ext_resource type="Script" uid="uid://cks8lg3ysrocd" path="res://game_screen.gd" id="1_j7yda"]
 [ext_resource type="PackedScene" uid="uid://43ku0c7m8gqa" path="res://player/player.tscn" id="1_yla3h"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cr752oxghekfm" path="res://levels/levels/level_graph.gd" id="3_6mti6"]
 [ext_resource type="PackedScene" uid="uid://byl640sm8s2b5" path="res://ui/menus/pause_menu_controller.tscn" id="3_lxtpa"]
 [ext_resource type="AudioStream" uid="uid://cgkhr5s5txcxx" path="res://common/music/EZDNB2 (CC-BY Of Far Different Nature).ogg" id="4_3vj30"]
+[ext_resource type="PackedScene" uid="uid://t8s7md5aqp7h" path="res://ui/player_hud.tscn" id="7_6mti6"]
 
 [sub_resource type="Resource" id="Resource_aybt7"]
 script = ExtResource("2_3vj30")
@@ -39,6 +40,9 @@ visible = false
 
 [node name="PauseMenuController" parent="CanvasLayer" instance=ExtResource("3_lxtpa")]
 visible = false
+
+[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("7_6mti6")]
+unique_name_in_owner = true
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://djnviqciekg0m"]
 
 [ext_resource type="Script" uid="uid://c5h2j43gcafvt" path="res://mobs/mob_weapon.gd" id="1_etxq6"]
-[ext_resource type="AudioStream" uid="uid://8k3b4dtgtm7h" path="res://weapons/shoot_fire.wav" id="2_j877y"]
+[ext_resource type="AudioStream" uid="uid://8k3b4dtgtm7h" path="res://weapons/player_weapons/shotgun/shoot_fire.wav" id="2_j877y"]
 [ext_resource type="PackedScene" uid="uid://cs55p4on85fs5" path="res://weapons/bullets/bullet.tscn" id="3_j877y"]
 
 [node name="MobWeapon" type="Node2D" node_paths=PackedStringArray("shoot_sound")]
