@@ -42,6 +42,10 @@ movie_writer/movie_file="/home/theo/Vidéos/Dev logs/Dev log.avi"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dev_time_tracker/plugin.cfg", "res://addons/project-time-tracker/plugin.cfg")
+
 [filesystem]
 
 import/blender/enabled=false
@@ -177,6 +181,12 @@ change_weapon_down={
 2d_physics/layer_5="Exit"
 2d_physics/layer_6="Items"
 2d_physics/layer_7="InvisibleWalls"
+
+[project_time_traker]
+
+sections/show_sections=true
+sections/show_graphs=true
+afk/afk_timer=300
 
 [rendering]
 
