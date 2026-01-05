@@ -2,6 +2,7 @@
 .godot/
 /android/
 *.translations
+project_time_traker.json
 addons/gdpractice/**
 addons/gdquest_colorpicker_presets/**
 addons/gdquest_sparkly_bag/**
