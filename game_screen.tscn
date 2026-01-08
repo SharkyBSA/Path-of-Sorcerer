@@ -22,14 +22,11 @@ metadata/_custom_type_script = "uid://cr752oxghekfm"
 
 [node name="GameScreen" type="Node2D"]
 process_mode = 1
-rotation = -0.00129737
 script = ExtResource("1_j7yda")
 level_graph = SubResource("Resource_oymjd")
 
 [node name="Player" parent="." instance=ExtResource("1_yla3h")]
 unique_name_in_owner = true
-position = Vector2(959.29846, 541.2451)
-scale = Vector2(0.99999994, 0.99999994)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

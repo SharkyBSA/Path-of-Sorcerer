@@ -34,9 +34,9 @@ scale_max = 0.29999998
 
 [node name="Weapon_full_auto" type="Node2D" node_paths=PackedStringArray("shoot_sound")]
 script = ExtResource("1_uf0ht")
-max_speed = 4000.0
+beam_width = 20.0
+max_speed = 2500.0
 max_range = 420.0
-spread = 0.08726646259971647
 shoot_audio_stream = ExtResource("2_hbdn2")
 bullet_scene = ExtResource("3_yhic6")
 shoot_sound = NodePath("ShootSound")
@@ -78,3 +78,7 @@ texture = ExtResource("2_sikb7")
 lifetime = 0.05
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_pv4mk")
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(110, 0)
