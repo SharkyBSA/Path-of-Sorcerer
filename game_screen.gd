@@ -13,6 +13,8 @@ class_name GameScreen extends Node2D
 var current_level : Level 
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
 	player.died.connect(func()->void:
 		get_tree().change_scene_to_file(GameStateManager.get_new_state(GameStateManager.TITLE_SCREEN))
 		)
@@ -27,7 +29,7 @@ func _ready() -> void:
 	player.max_health_changed.connect(player_hud.set_health_bar_max_value)
 	player.weapons_changed.connect(player_hud.set_weapon_selection_bar_content)
 	player.weapon_index_changed.connect(player_hud.set_selected_weapon_index)
-	
+
 	var first_level = level_graph.load_level(0)
 	if first_level == null:
 		print("Oups pas de level à l'initialisation du GameScreen")
