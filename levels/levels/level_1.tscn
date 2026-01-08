@@ -1,8 +1,7 @@
-[gd_scene load_steps=36 format=4 uid="uid://bnp40e3u1gnfo"]
+[gd_scene load_steps=35 format=4 uid="uid://bnp40e3u1gnfo"]
 
 [ext_resource type="PackedScene" uid="uid://diw0kp1e3livt" path="res://levels/rooms/room_d.tscn" id="1_5hph3"]
 [ext_resource type="Script" uid="uid://d1tk3y5siof6w" path="res://levels/levels/level_1.gd" id="1_ubhxj"]
-[ext_resource type="PackedScene" uid="uid://c0i2gypp2yyrp" path="res://mobs/mob.tscn" id="4_gyffv"]
 [ext_resource type="PackedScene" uid="uid://wyt7eaje6cu7" path="res://pickups/chest/chest.tscn" id="5_27bay"]
 [ext_resource type="PackedScene" uid="uid://wdey00p3syru" path="res://levels/background/background_blue_sky.tscn" id="5_gyffv"]
 [ext_resource type="PackedScene" uid="uid://bqgndsftdrxo" path="res://npc/pnj.tscn" id="5_itv62"]
@@ -13,7 +12,7 @@
 [ext_resource type="Resource" uid="uid://c4wh1vgu6lh72" path="res://pickups/healing_item_green_heart.tres" id="7_ggavl"]
 [ext_resource type="PackedScene" uid="uid://dlxjrgals3rg2" path="res://levels/invisible_walls.tscn" id="8_5rr72"]
 [ext_resource type="Texture2D" uid="uid://bhinvhx75etr2" path="res://npc/dialogue/emotion_sad.png" id="8_sx2l2"]
-[ext_resource type="PackedScene" uid="uid://80fwms4qyswm" path="res://mobs/shooting_mob.tscn" id="10_65or1"]
+[ext_resource type="PackedScene" uid="uid://dqd74pi3umw4l" path="res://levels/spawner/spawner.tscn" id="9_sdfxn"]
 [ext_resource type="Texture2D" uid="uid://dchimpdsnda13" path="res://npc/dialogue/emotion_happy.png" id="10_fv7qr"]
 [ext_resource type="Resource" uid="uid://028tppdurris" path="res://pickups/speed_item_eclair.tres" id="10_sof0w"]
 [ext_resource type="PackedScene" uid="uid://bqwac15wys7j3" path="res://levels/rooms/teleporter/teleporter.tscn" id="13_65or1"]
@@ -72,23 +71,26 @@ metadata/_custom_type_script = "uid://coo72sfdgaln7"
 [node name="Level 1" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_ubhxj")
-_player_spawn = Vector2(896, 896)
+_player_spawn = Vector2(704, 768)
 
 [node name="BackgroundBlueSky" parent="." instance=ExtResource("5_gyffv")]
 
 [node name="SpawnRoom" parent="." instance=ExtResource("1_5hph3")]
 position = Vector2(384, -448.00003)
-
-[node name="Mob" parent="SpawnRoom" instance=ExtResource("4_gyffv")]
-position = Vector2(1151.9994, 256.00003)
-
-[node name="Mob2" parent="SpawnRoom" instance=ExtResource("4_gyffv")]
-position = Vector2(511.99997, 256.8586)
+metadata/_edit_lock_ = true
 
 [node name="PNJ" parent="SpawnRoom" instance=ExtResource("5_itv62")]
 position = Vector2(193.28766, 959.7416)
 rotation = -0.0013414626
 dialog_content = Array[ExtResource("6_sx2l2")]([SubResource("Resource_rgqpb"), SubResource("Resource_fv7qr"), SubResource("Resource_ldjq8"), SubResource("Resource_y3yxe")])
+
+[node name="Spawner" parent="SpawnRoom" instance=ExtResource("9_sdfxn")]
+position = Vector2(512, 320)
+spawn_type = 0
+
+[node name="Spawner2" parent="SpawnRoom" instance=ExtResource("9_sdfxn")]
+position = Vector2(1024, 320.00003)
+spawn_type = 0
 
 [node name="PNJRoom" parent="." instance=ExtResource("14_dud5q")]
 y_sort_enabled = true
@@ -109,41 +111,55 @@ y_sort_enabled = true
 position = Vector2(512, -3136)
 metadata/_edit_lock_ = true
 
-[node name="ShootingMob" parent="RoomA" instance=ExtResource("10_65or1")]
-position = Vector2(1408, 512)
+[node name="Spawner" parent="RoomA" instance=ExtResource("9_sdfxn")]
+position = Vector2(1344, 448)
 
-[node name="Mob6" parent="RoomA" instance=ExtResource("4_gyffv")]
-position = Vector2(832, 384)
+[node name="Spawner2" parent="RoomA" instance=ExtResource("9_sdfxn")]
+position = Vector2(-256, 896)
+spawn_type = 0
 
-[node name="Mob7" parent="RoomA" instance=ExtResource("4_gyffv")]
-position = Vector2(1472, 1088)
+[node name="Spawner3" parent="RoomA" instance=ExtResource("9_sdfxn")]
+position = Vector2(832, 640)
+spawn_type = 0
 
 [node name="RoomA2" parent="." instance=ExtResource("14_tj8pf")]
 y_sort_enabled = true
 position = Vector2(-1920, -1344)
 metadata/_edit_lock_ = true
 
-[node name="Mob9" parent="RoomA2" instance=ExtResource("4_gyffv")]
-position = Vector2(1152, 192)
+[node name="Spawner" parent="RoomA2" instance=ExtResource("9_sdfxn")]
+position = Vector2(1280, 320)
+rotation = 0.8949305
+scale = Vector2(0.99999994, 0.99999994)
+spawn_type = 0
 
-[node name="Mob10" parent="RoomA2" instance=ExtResource("4_gyffv")]
-position = Vector2(1216, 1024)
+[node name="Spawner2" parent="RoomA2" instance=ExtResource("9_sdfxn")]
+position = Vector2(1152, 1088)
+scale = Vector2(0.9999998, 0.9999998)
+spawn_type = 0
 
 [node name="ChestRoom" parent="." instance=ExtResource("1_5hph3")]
 position = Vector2(-1920, 320)
 script = ExtResource("18_hhwnt")
+metadata/_edit_lock_ = true
 
-[node name="Mob11" parent="ChestRoom" instance=ExtResource("4_gyffv")]
-unique_name_in_owner = true
+[node name="Spawner" parent="ChestRoom" instance=ExtResource("9_sdfxn")]
 position = Vector2(384, 320)
+rotation = 0.44746524
+spawn_on_ready = false
+spawn_type = 0
 
-[node name="Mob12" parent="ChestRoom" instance=ExtResource("4_gyffv")]
-unique_name_in_owner = true
-position = Vector2(1152, 576)
+[node name="Spawner2" parent="ChestRoom" instance=ExtResource("9_sdfxn")]
+position = Vector2(1152, 512)
+rotation = 2.7048488
+spawn_on_ready = false
+spawn_type = 0
 
-[node name="Mob13" parent="ChestRoom" instance=ExtResource("4_gyffv")]
-unique_name_in_owner = true
-position = Vector2(768, 1216)
+[node name="Spawner3" parent="ChestRoom" instance=ExtResource("9_sdfxn")]
+position = Vector2(192, 896)
+rotation = -0.41552863
+spawn_on_ready = false
+spawn_type = 0
 
 [node name="Door" parent="ChestRoom" instance=ExtResource("16_usq73")]
 unique_name_in_owner = true
@@ -176,22 +192,28 @@ polygon = PackedVector2Array(-64, 0, -64, 256, 448, 256, 448, 0, 384, 0, 384, 19
 y_sort_enabled = true
 position = Vector2(2560, -5696)
 script = ExtResource("23_8tn50")
+metadata/_edit_lock_ = true
 
 [node name="Teleporter" parent="TeleporterRoom" instance=ExtResource("13_65or1")]
 unique_name_in_owner = true
 position = Vector2(448, 128)
 
-[node name="Mob5" parent="TeleporterRoom" instance=ExtResource("4_gyffv")]
-position = Vector2(576, 1152)
-
-[node name="Mob8" parent="TeleporterRoom" instance=ExtResource("4_gyffv")]
-position = Vector2(1280, 640)
-
-[node name="ShootingMob2" parent="TeleporterRoom" instance=ExtResource("10_65or1")]
+[node name="Spawner" parent="TeleporterRoom" instance=ExtResource("9_sdfxn")]
 position = Vector2(640, 256)
+spawn_on_ready = false
 
-[node name="ShootingMob" parent="TeleporterRoom" instance=ExtResource("10_65or1")]
-position = Vector2(192, 512)
+[node name="Spawner2" parent="TeleporterRoom" instance=ExtResource("9_sdfxn")]
+position = Vector2(384, 384)
+spawn_on_ready = false
+
+[node name="Spawner3" parent="TeleporterRoom" instance=ExtResource("9_sdfxn")]
+position = Vector2(1344, 768)
+spawn_type = 0
+
+[node name="Spawner4" parent="TeleporterRoom" instance=ExtResource("9_sdfxn")]
+position = Vector2(768, 1088)
+spawn_on_ready = false
+spawn_type = 0
 
 [node name="Door" parent="TeleporterRoom" instance=ExtResource("16_usq73")]
 position = Vector2(1216, 1344)

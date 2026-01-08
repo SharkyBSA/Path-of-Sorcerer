@@ -1,30 +1,39 @@
 extends Room
 
 @onready var teleporter: Teleporter = %Teleporter
-@onready var mob_5: Mob = $Mob5
-@onready var mob_8: Mob = $Mob8
-@onready var shooting_mob_2: Shooting_Mob = $ShootingMob2
-@onready var shooting_mob: Shooting_Mob = $ShootingMob
 @onready var player_enter_room_detect: Area2D = $PlayerEnterRoomDetect
 @onready var door: Door = $Door
 
-var room_cleaned : bool = false
+var spawned_mobs : Array[Node] = []
+
 
 func _ready() -> void:
 	super()
 	player_enter_room_detect.body_entered.connect(_on_player_enter_room)
-	get_tree().create_timer(2).timeout.connect(_on_timer_check_room)
 	
 func _on_player_enter_room(body : CharacterBody2D)->void:
-	if body is Player:
-		door.opened=room_cleaned
-		teleporter.active=room_cleaned
-		player_enter_room_detect.queue_free()
+	if body is not Player:
+		return
+		
+	teleporter.active=false
+	door.opened=false
+	
+	player_enter_room_detect.queue_free()
+	for child in get_children():
+		if child is not Spawner:
+			continue
+		var mob : Node2D = child.spawn()
+		spawned_mobs.append(mob)
+		mob.tree_exited.connect(_check_room_cleared)
 
-func _on_timer_check_room()->void:
-	if mob_5 == null && mob_8 == null && shooting_mob_2 == null && shooting_mob == null:
-		room_cleaned = true
-		door.opened = true
-		teleporter.active=true
-	else :
-		get_tree().create_timer(2).timeout.connect(_on_timer_check_room)
+func _check_room_cleared()->void:
+	var still_connected : int = 0;
+	for node in spawned_mobs:
+		still_connected+= 0 if node==null || node.get_parent()==null else 1
+	
+	if still_connected==0:
+		get_tree().create_timer(2).timeout.connect(_on_room_cleared)
+
+func _on_room_cleared()->void:
+	door.opened=true
+	teleporter.active=true
