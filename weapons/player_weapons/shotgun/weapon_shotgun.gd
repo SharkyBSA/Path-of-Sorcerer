@@ -22,7 +22,7 @@ func _physics_process(_delta: float) -> void:
 func shoot()->void:
 	for i in range(bullet_amount):
 		var bullet : Bullet = bullet_scene.instantiate()
-		bullet.damage*=4.0/bullet_amount
+		bullet.damage = damage_per_bullet
 		bullet.global_rotation = global_rotation +randf_range(-spread/2,spread/2)
 		bullet.global_position = global_position
 		bullet.max_range = randf_range(min_range,max_range)

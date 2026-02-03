@@ -24,6 +24,7 @@ func shoot()->void:
 	bullet.global_position = global_position
 	bullet.max_range = max_range
 	bullet.speed = max_speed
+	bullet.damage = damage_per_bullet
 	get_tree().current_scene.add_child(bullet)
 	
 	weapon_ready = false

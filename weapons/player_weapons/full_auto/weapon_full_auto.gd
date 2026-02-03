@@ -46,6 +46,7 @@ func shoot()->void:
 	bullet.max_range = max_range
 	bullet.speed = max_speed
 	bullet.scale = Vector2.ONE *0.5
+	bullet.damage = damage_per_bullet
 	get_tree().current_scene.add_child(bullet)
 	
 	shoot_sound.pitch_scale = 0.4

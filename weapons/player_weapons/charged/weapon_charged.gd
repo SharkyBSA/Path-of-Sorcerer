@@ -39,12 +39,13 @@ func shoot()->void:
 		
 	var bullet : Bullet = bullet_scene.instantiate()
 	var charge_ratio = current_charge_time/max_charge_time
-	bullet.damage*= charge_ratio
-	bullet.scale= Vector2.ONE*2*charge_ratio
+	bullet.scale= Vector2.ONE*3*charge_ratio
 	bullet.global_rotation = global_rotation +randf_range(-spread/2,spread/2)
 	bullet.global_position = global_position
 	bullet.max_range = max_range
 	bullet.speed =  max_speed
+	bullet.damage = damage_per_bullet * charge_ratio
+
 	get_tree().current_scene.add_child(bullet)
 	shoot_sound.play()
 	current_charge_time=0.0

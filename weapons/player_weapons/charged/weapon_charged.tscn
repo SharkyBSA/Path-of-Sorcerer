@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://wjydyg84ucq8"]
+[gd_scene format=3 uid="uid://wjydyg84ucq8"]
 
 [ext_resource type="Texture2D" uid="uid://djnqskxeihg82" path="res://player/hand_ice.png" id="1_cl22y"]
 [ext_resource type="Script" uid="uid://fab1wer1tqr3" path="res://weapons/player_weapons/charged/weapon_charged.gd" id="1_t8j6h"]
@@ -19,30 +19,31 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.39999998
 scale_max = 0.39999998
 
-[node name="WeaponCharged" type="Node2D" node_paths=PackedStringArray("shoot_sound")]
+[node name="WeaponCharged" type="Node2D" unique_id=18839432 node_paths=PackedStringArray("shoot_sound")]
 script = ExtResource("1_t8j6h")
 max_charge_time = 2.0
 min_charge_time = 0.5
-max_speed = 600.0
+max_speed = 1200.0
 max_range = 600.0
+damage_per_bullet = 30.0
+shoot_sound = NodePath("ShootSound")
 shoot_audio_stream = ExtResource("2_hmeim")
 bullet_scene = ExtResource("3_hmeim")
-shoot_sound = NodePath("ShootSound")
 
-[node name="HandIce" type="Sprite2D" parent="."]
+[node name="HandIce" type="Sprite2D" parent="." unique_id=250461201]
 position = Vector2(0, -30)
 texture = ExtResource("1_cl22y")
 
-[node name="HandIce2" type="Sprite2D" parent="."]
+[node name="HandIce2" type="Sprite2D" parent="." unique_id=953812465]
 position = Vector2(0, 30)
 texture = ExtResource("1_cl22y")
 flip_v = true
 
-[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=2083771446]
 stream = ExtResource("2_hmeim")
 bus = &"Effects"
 
-[node name="Particles" type="GPUParticles2D" parent="."]
+[node name="Particles" type="GPUParticles2D" parent="." unique_id=960485873]
 unique_name_in_owner = true
 emitting = false
 texture = ExtResource("5_mqs4b")
