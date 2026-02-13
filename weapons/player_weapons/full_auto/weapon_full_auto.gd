@@ -11,8 +11,10 @@ class_name Weapon_FullAuto extends Weapon
 
 var particle_left_material : ParticleProcessMaterial 
 var particle_right_material : ParticleProcessMaterial 
+var _power_ball_ready := false
 
 @onready var cooldown: Timer = $Cooldown
+@onready var _power_ball: PowerBall = %PowerBall
 
 func _ready() -> void:
 	particles_left.emitting=false
@@ -20,6 +22,10 @@ func _ready() -> void:
 	particle_left_material=particles_left.process_material
 	particle_right_material=particles_right.process_material
 	cooldown.wait_time = 1/shots_per_secs
+	
+	_power_ball.grow_finished.connect(func()->void:
+		_power_ball_ready=true
+		)
 
 	if Engine.is_editor_hint():
 		set_physics_process(false)
@@ -29,13 +35,17 @@ func _unhandled_input(event: InputEvent) -> void:
 		particles_left.emitting =true
 		particles_right.emitting =true
 		shoot_sound.play()
+		_power_ball.active = true
+		_power_ball_ready = false
+
 	elif event.is_action_released("shoot"):
 		particles_left.emitting =false
 		particles_right.emitting =false
+		_power_ball.active=false
 		shoot_sound.stop()
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_pressed("shoot") && _power_ball_ready:
 		shoot()
 
 func shoot()->void:

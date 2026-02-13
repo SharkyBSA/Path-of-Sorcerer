@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dohb8151irsju" path="res://weapons/bullets/bullet_lightning.tscn" id="2_e86y8"]
 [ext_resource type="Texture2D" uid="uid://6q8c06dxssv8" path="res://weapons/bullets/lightning.png" id="2_sikb7"]
 [ext_resource type="Texture2D" uid="uid://c3x625j6kshod" path="res://player/hand_lightning.png" id="3_hbdn2"]
+[ext_resource type="PackedScene" uid="uid://b0sujoxpl7jkh" path="res://weapons/common/power_ball.tscn" id="6_646io"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yhic6"]
 particle_flag_disable_z = true
@@ -83,4 +84,10 @@ process_material = SubResource("ParticleProcessMaterial_pv4mk")
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=1712648946]
 unique_name_in_owner = true
+z_index = 10
 position = Vector2(110, 0)
+scale = Vector2(1.2, 1.2)
+
+[node name="PowerBall" parent="BulletSpawnPoint" unique_id=597823677 instance=ExtResource("6_646io")]
+unique_name_in_owner = true
+position = Vector2(-17, 0)
