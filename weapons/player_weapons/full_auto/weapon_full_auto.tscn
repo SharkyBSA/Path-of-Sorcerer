@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://t03upx3bu80l"]
+[gd_scene format=3 uid="uid://t03upx3bu80l"]
 
 [ext_resource type="Script" uid="uid://b3i1mn7rkkjwv" path="res://weapons/player_weapons/full_auto/weapon_full_auto.gd" id="1_uf0ht"]
-[ext_resource type="AudioStream" uid="uid://56dws0tsoa3j" path="res://weapons/bullets/hit_lightning_loop.wav" id="2_hbdn2"]
+[ext_resource type="AudioStream" uid="uid://56dws0tsoa3j" path="res://weapons/bullets/hit_lightning_loop.wav" id="2_68orr"]
+[ext_resource type="PackedScene" uid="uid://dohb8151irsju" path="res://weapons/bullets/bullet_lightning.tscn" id="2_e86y8"]
 [ext_resource type="Texture2D" uid="uid://6q8c06dxssv8" path="res://weapons/bullets/lightning.png" id="2_sikb7"]
 [ext_resource type="Texture2D" uid="uid://c3x625j6kshod" path="res://player/hand_lightning.png" id="3_hbdn2"]
-[ext_resource type="PackedScene" uid="uid://dohb8151irsju" path="res://weapons/bullets/bullet_lightning.tscn" id="3_yhic6"]
+[ext_resource type="PackedScene" uid="uid://b0sujoxpl7jkh" path="res://weapons/common/power_ball.tscn" id="6_646io"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yhic6"]
 particle_flag_disable_z = true
@@ -32,34 +33,36 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.29999998
 scale_max = 0.29999998
 
-[node name="Weapon_full_auto" type="Node2D" node_paths=PackedStringArray("shoot_sound")]
+[node name="Weapon_full_auto" type="Node2D" unique_id=407772464 node_paths=PackedStringArray("shoot_sound")]
 script = ExtResource("1_uf0ht")
-max_speed = 4000.0
+beam_width = 15.0
+max_speed = 2500.0
 max_range = 420.0
-spread = 0.08726646259971647
-shoot_audio_stream = ExtResource("2_hbdn2")
-bullet_scene = ExtResource("3_yhic6")
+damage_per_bullet = 0.5
+spread = 0.5235987755982988
 shoot_sound = NodePath("ShootSound")
+shoot_audio_stream = ExtResource("2_68orr")
+bullet_scene = ExtResource("2_e86y8")
 
-[node name="HandLightningClosed" type="Sprite2D" parent="."]
+[node name="HandLightningClosed" type="Sprite2D" parent="." unique_id=154883315]
 position = Vector2(0, -34)
 rotation = 0.34906584
 texture = ExtResource("3_hbdn2")
 
-[node name="HandLightningClosed2" type="Sprite2D" parent="."]
+[node name="HandLightningClosed2" type="Sprite2D" parent="." unique_id=533170152]
 position = Vector2(0, 34)
 rotation = -0.34906584
 texture = ExtResource("3_hbdn2")
 flip_v = true
 
-[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_hbdn2")
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=662299262]
+stream = ExtResource("2_68orr")
 bus = &"Effects"
 
-[node name="Cooldown" type="Timer" parent="."]
+[node name="Cooldown" type="Timer" parent="." unique_id=1389821210]
 wait_time = 0.05
 
-[node name="ParticlesLeft" type="GPUParticles2D" parent="."]
+[node name="ParticlesLeft" type="GPUParticles2D" parent="." unique_id=1386894493]
 unique_name_in_owner = true
 position = Vector2(-9.536743e-07, 3.8146973e-06)
 scale = Vector2(1.0000001, 1.0000001)
@@ -69,7 +72,7 @@ lifetime = 0.05
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_yhic6")
 
-[node name="ParticlesRight" type="GPUParticles2D" parent="."]
+[node name="ParticlesRight" type="GPUParticles2D" parent="." unique_id=579859241]
 unique_name_in_owner = true
 position = Vector2(-9.536743e-07, -3.8146973e-06)
 scale = Vector2(1.0000001, 1.0000001)
@@ -78,3 +81,13 @@ texture = ExtResource("2_sikb7")
 lifetime = 0.05
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_pv4mk")
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=1712648946]
+unique_name_in_owner = true
+z_index = 10
+position = Vector2(110, 0)
+scale = Vector2(1.2, 1.2)
+
+[node name="PowerBall" parent="BulletSpawnPoint" unique_id=597823677 instance=ExtResource("6_646io")]
+unique_name_in_owner = true
+position = Vector2(-17, 0)

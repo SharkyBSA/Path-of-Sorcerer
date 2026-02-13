@@ -1,13 +1,22 @@
+@tool
 @abstract class_name Weapon extends Node2D
 
 @export_group("Weapon Stats")
 @export var max_speed : float = 200.0
 @export var max_range : float = 400.0
+@export var damage_per_bullet : float = 1.0
 @export_range(0.0,180,1.0,"radians_as_degrees") var spread : float = 0.0
 
-var target_player:bool=true
-
+@export_group("Mandatory Nodes")
+@export var shoot_sound: AudioStreamPlayer2D = null:
+	set(node):
+		shoot_sound = node
+		update_configuration_warnings()
+	get():
+		return shoot_sound
+		
 @export_group("Weapon parameters")
+
 @export var shoot_audio_stream : AudioStream = null :
 	set(audio_stream):
 		if shoot_sound !=null:
@@ -18,16 +27,12 @@ var target_player:bool=true
 			return shoot_sound.stream
 		else:
 			return null
-			
+
 @export var bullet_scene : PackedScene = null:
 	set = _set_bullet_scene
 
-@export_group("Mandatory Nodes")
-@export var shoot_sound: AudioStreamPlayer2D = null:
-	set(node):
-		shoot_sound = node
-		update_configuration_warnings()
-		
+var target_player:bool=true
+
 @abstract func shoot()->void
 
 func _set_bullet_scene(scene : PackedScene)-> void:
