@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://7nis3dytr2ns" path="res://mobs/shooting_mob.gd" id="1_ujdf2"]
 [ext_resource type="PackedScene" uid="uid://5ays6kuo0xio" path="res://common/shadow.tscn" id="2_oug3g"]
 [ext_resource type="AudioStream" uid="uid://dfc5tcrthtntk" path="res://mobs/hurt.wav" id="3_cjbmp"]
+[ext_resource type="Animation" uid="uid://bcavixgjphcnp" path="res://common/animation/mob_die.res" id="4_i32jn"]
 [ext_resource type="AudioStream" uid="uid://cte8ddxd7o4de" path="res://mobs/kill.wav" id="4_iboym"]
 [ext_resource type="Animation" uid="uid://bqnesydpxvgn3" path="res://common/animation/hover_entity.res" id="4_oqewt"]
 [ext_resource type="PackedScene" uid="uid://djnviqciekg0m" path="res://mobs/mob_weapon.tscn" id="5_iboym"]
@@ -14,6 +15,7 @@ height = 96.0
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i32jn"]
 _data = {
+&"die": ExtResource("4_i32jn"),
 &"hover_entity": ExtResource("4_oqewt")
 }
 
@@ -46,6 +48,7 @@ unique_name_in_owner = true
 texture = ExtResource("1_07nfh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" unique_id=471296024]
+unique_name_in_owner = true
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_i32jn")
 autoplay = &"hover_entity"

@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dfc5tcrthtntk" path="res://mobs/hurt.wav" id="3_4p423"]
 [ext_resource type="AudioStream" uid="uid://cte8ddxd7o4de" path="res://mobs/kill.wav" id="4_cxx3d"]
 [ext_resource type="PackedScene" uid="uid://5ays6kuo0xio" path="res://common/shadow.tscn" id="4_il41e"]
+[ext_resource type="Animation" uid="uid://bcavixgjphcnp" path="res://common/animation/mob_die.res" id="5_fbdti"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxx3d"]
 radius = 34.0
@@ -43,6 +44,50 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.1, 0, 0.1, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.1, 0, 0.1, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.1, 0, 0.1, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.1, 0, 0.1, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_p7hwu"]
@@ -104,6 +149,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4p423"]
 _data = {
 &"RESET": SubResource("Animation_4p423"),
+&"die": ExtResource("5_fbdti"),
 &"hit_player": SubResource("Animation_p7hwu"),
 &"hit_reset": SubResource("Animation_fgbma"),
 &"hover": ExtResource("2_il41e")
@@ -159,12 +205,9 @@ unique_name_in_owner = true
 stream = ExtResource("4_cxx3d")
 bus = &"Effects"
 
-[node name="ShadowRotationPoint" type="Node2D" parent="." unique_id=598746731]
-unique_name_in_owner = true
-
-[node name="Shadow" parent="ShadowRotationPoint" unique_id=2021748978 instance=ExtResource("4_il41e")]
-
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1118620859]
+unique_name_in_owner = true
+position = Vector2(0, 50)
 texture = ExtResource("2_p7hwu")
 
 [node name="MobAnimation" type="AnimationPlayer" parent="Sprite" unique_id=87372334]
@@ -174,3 +217,8 @@ libraries/ = SubResource("AnimationLibrary_4p423")
 autoplay = &"hover"
 next/hit_player = &"hit_reset"
 next/hit_reset = &"hover"
+
+[node name="ShadowRotationPoint" type="Node2D" parent="." unique_id=598746731]
+unique_name_in_owner = true
+
+[node name="Shadow" parent="ShadowRotationPoint" unique_id=2021748978 instance=ExtResource("4_il41e")]

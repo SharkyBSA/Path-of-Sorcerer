@@ -36,6 +36,7 @@ var detected_player : Player = null
 @onready var player_detection_area: Area2D = %PlayerDetectionArea
 @onready var player_detection_shape: CircleShape2D = %PlayerDetectionShape.shape
 @onready var mob_weapon: Mob_Weapon = %MobWeapon
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 func _ready() -> void:
 	shoot_timer.wait_time=1.0/shots_per_sec
@@ -105,6 +106,11 @@ func die() ->void:
 	player_detection_area.set_deferred("monitoring",false)
 	detected_player=null
 	
+	animation_player.play("die")
+	
 	%DeathSound.play()
 	await %DeathSound.finished
+	if (animation_player.is_playing()):
+		await animation_player.animation_finished
+	
 	queue_free()
