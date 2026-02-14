@@ -19,6 +19,42 @@
 radius = 31.0
 height = 82.0
 
+[sub_resource type="Animation" id="Animation_kb6p2"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-44, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_wodsf"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0),
+"points": PackedFloat32Array(-44, 0, 0, 0.4, 0, -50, -0.4, 0, 0.4, 0, -44, -0.4, 0, 0.2, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_32hag"]
+_data = {
+&"RESET": SubResource("Animation_kb6p2"),
+&"idle": SubResource("Animation_wodsf")
+}
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_65viv"]
 streams_count = 5
 stream_0/stream = ExtResource("11_wodsf")
@@ -49,6 +85,12 @@ shape = SubResource("CapsuleShape2D_yw30f")
 position = Vector2(0, -44)
 texture = ExtResource("1_rkbax")
 script = ExtResource("3_yw30f")
+inclinaison_max = 0.2617993877991494
+
+[node name="PlayerSpriteAnim" type="AnimationPlayer" parent="PlayerSprite" unique_id=774902666]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_32hag")
+autoplay = &"idle"
 
 [node name="WeaponPivot" type="Node2D" parent="." unique_id=1253841342]
 unique_name_in_owner = true

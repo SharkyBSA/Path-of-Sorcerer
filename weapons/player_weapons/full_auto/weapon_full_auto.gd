@@ -22,13 +22,14 @@ func _ready() -> void:
 	particle_left_material=particles_left.process_material
 	particle_right_material=particles_right.process_material
 	cooldown.wait_time = 1/shots_per_secs
-	
-	_power_ball.grow_finished.connect(func()->void:
-		_power_ball_ready=true
-		)
 
 	if Engine.is_editor_hint():
 		set_physics_process(false)
+	
+	if not Engine.is_editor_hint():
+		_power_ball.grow_finished.connect(func()->void:
+			_power_ball_ready=true
+		)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
