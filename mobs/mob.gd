@@ -28,11 +28,13 @@ var health := max_health:
 var detected_player : Player = null
 var collided_player : Player = null
 
-@onready var hit_animation: AnimationPlayer = %HitAnimation
+@onready var mob_animation: AnimationPlayer = %MobAnimation
 @onready var player_detection_area: Area2D = %PlayerDetectionArea
 @onready var player_hit_area: Area2D = %HitPlayerArea
 @onready var hit_timer: Timer = %HitTimer
 @onready var shadow_rotation_point: Node2D = %ShadowRotationPoint
+@onready var mob_sprite: Sprite2D = %Sprite
+
 
 func _ready() -> void:
 	hit_timer.timeout.connect(init_hit_player)
@@ -42,13 +44,12 @@ func _ready() -> void:
 	player_detection_area.body_entered.connect(_on_player_detection_area_entered)
 	player_detection_area.body_exited.connect(_on_player_detection_area_exited)
 	
-	hit_animation.animation_set_next("hit_player","hit_reset")
-	hit_animation.animation_changed.connect(func(old_anim: StringName,_new_anim: StringName)->void:
+	mob_animation.animation_changed.connect(func(old_anim: StringName,_new_anim: StringName)->void:
 		if old_anim.contains("hit_player") :
 			_hit_player()
 			hit_timer.start()
 		)
-		
+
 func _physics_process(delta: float) -> void:
 	if(detected_player==null):
 		_idle_mouvement(delta)
@@ -80,7 +81,7 @@ func _on_player_hit_area_exited(body : Node2D)->void:
 
 func init_hit_player()->void:
 	if collided_player != null:
-		hit_animation.play("hit_player")
+		mob_animation.play("hit_player")
 	
 func _hit_player()->void:
 	if collided_player != null :
@@ -105,6 +106,16 @@ func die() ->void:
 	collided_player=null
 	_on_player_hit_area_exited(collided_player)
 	
+	var current_global_rotation :=global_rotation
+	global_rotation=0.0
+	mob_sprite.global_rotation=current_global_rotation
+	shadow_rotation_point.global_rotation=0.0
+
+	mob_animation.play("die")
+	
 	%DeathSound.play()
 	await %DeathSound.finished
+	if (mob_animation.is_playing()):
+		await mob_animation.animation_finished
+	
 	queue_free()

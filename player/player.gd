@@ -16,6 +16,9 @@ var weapon_full_auto : Weapon_FullAuto = preload("uid://t03upx3bu80l").instantia
 var weapons : Array[Weapon] = [weapon_shotgun,weapon_semi_auto,weapon_charged,weapon_full_auto]
 var current_weapon_index : int = -1 :
 	set = change_weapon
+	
+@onready var player_sprite: Sprite2D = %Sprite
+@onready var player_sprite_anim: AnimationPlayer = %PlayerSpriteAnim
 
 signal died
 signal health_changed(new_health : int)
@@ -74,8 +77,13 @@ func _unhandled_input(event: InputEvent) -> void:
 func die()->void:
 	_collision_shape_2d.set_deferred("disabled",true)
 	set_all_physics_process(false)
+	player_sprite_anim.play("die")
+	
 	_death_sound_effect.play()
 	await _death_sound_effect.finished
+	if (player_sprite_anim.is_playing()):
+		await player_sprite_anim.animation_finished
+	
 	died.emit()
 
 func add_weapon(_new_weapon_type : WeaponType)->void:
@@ -119,6 +127,6 @@ func change_weapon(new_weapon_index :int)->void:
 	
 func set_all_physics_process(val : bool)->void:
 	set_physics_process(val)
-	$PlayerSprite.set_physics_process(val)
+	player_sprite.set_physics_process(val)
 	weapon.set_physics_process(val)
 	%WeaponPivot.set_physics_process(val)

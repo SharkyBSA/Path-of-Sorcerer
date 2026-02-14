@@ -1,20 +1,30 @@
 extends Sprite2D
 
+@export_range(0.0,30.0,1.0,"radians_as_degrees") var inclinaison_max : float 
+@export var position_offset_max : float = 10.0
 const GODOT_BOTTOM : Texture2D = preload("uid://bw03btxpkxde4")
 const GODOT_BOTTOM_RIGHT : Texture2D  = preload("uid://cm33qabjyo48g")
 const GODOT_RIGHT : Texture2D  = preload("uid://dscj1kv8s4bxa")
 const GODOT_UP : Texture2D  = preload("uid://b2q8n8kfhhbi7")
 const GODOT_UP_RIGHT : Texture2D  = preload("uid://deiak2vt25cwr")
 
+@onready var inclinaison_tweener : Tween 
+@onready var position_tweener : Tween 
+var inclinaison_target : float = 0.0
+var position_offset_target : float = 0.0
+
 func _physics_process(_delta: float) -> void:
-	var input_vec :  = Input.get_vector("player_left","player_right","player_up","player_down")
+	var input_vec := Input.get_vector("player_left","player_right","player_up","player_down")
 	if input_vec.length()==0:
+		tween_inclinaison(0)
 		return
 		
 	var input_rotation : float = input_vec.angle()
 	var input_code : int = round(input_rotation/(PI/4))
 	
-	if [-4,4,0,0].has(input_code):
+	if [-4,4,0].has(input_code):
+		texture = GODOT_RIGHT
+	elif input_code==0:
 		texture = GODOT_RIGHT
 	elif [-3,-1].has(input_code):
 		texture= GODOT_UP_RIGHT
@@ -26,7 +36,31 @@ func _physics_process(_delta: float) -> void:
 		texture = GODOT_UP
 	
 	flip_h = abs(input_code)>=3
+	
+	tween_inclinaison(get_target_inclinaison_from_input_code(input_code))
+	tween_position(input_vec.x*position_offset_max)
+	
+func get_target_inclinaison_from_input_code(input_code: int)->float:
+	return (abs(input_code)-2)*(-inclinaison_max/2)
 
+func tween_inclinaison(new_target_inclinaison: float)->void:
+	if new_target_inclinaison == inclinaison_target:
+		return
+		
+	if inclinaison_tweener != null:
+		inclinaison_tweener.kill()
 	
+	inclinaison_target=new_target_inclinaison
+	inclinaison_tweener = create_tween()
+	inclinaison_tweener.tween_property(self,"rotation",inclinaison_target,0.05)
 	
+func tween_position(new_target_position: float)->void:
+	if new_target_position == position_offset_target:
+		return
+		
+	if position_tweener != null:
+		position_tweener.kill()
 	
+	position_offset_target=new_target_position
+	position_tweener = create_tween()
+	position_tweener.tween_property(self,"position:x",position_offset_target,0.05)

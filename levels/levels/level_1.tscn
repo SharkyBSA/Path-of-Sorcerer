@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://bnp40e3u1gnfo"]
+[gd_scene format=4 uid="uid://bnp40e3u1gnfo"]
 
 [ext_resource type="PackedScene" uid="uid://diw0kp1e3livt" path="res://levels/rooms/room_d.tscn" id="1_5hph3"]
 [ext_resource type="Script" uid="uid://d1tk3y5siof6w" path="res://levels/levels/level_1.gd" id="1_ubhxj"]
@@ -68,177 +68,176 @@ texture = ExtResource("15_hhwnt")
 pickup_sound = ExtResource("13_y3yxe")
 metadata/_custom_type_script = "uid://coo72sfdgaln7"
 
-[node name="Level 1" type="Node2D"]
+[node name="Level 1" type="Node2D" unique_id=1930288221]
 y_sort_enabled = true
 script = ExtResource("1_ubhxj")
 _player_spawn = Vector2(704, 768)
 
-[node name="BackgroundBlueSky" parent="." instance=ExtResource("5_gyffv")]
+[node name="BackgroundBlueSky" parent="." unique_id=64877695 instance=ExtResource("5_gyffv")]
 
-[node name="SpawnRoom" parent="." instance=ExtResource("1_5hph3")]
+[node name="SpawnRoom" parent="." unique_id=664154869 instance=ExtResource("1_5hph3")]
 position = Vector2(384, -448.00003)
 metadata/_edit_lock_ = true
 
-[node name="PNJ" parent="SpawnRoom" instance=ExtResource("5_itv62")]
+[node name="PNJ" parent="SpawnRoom" unique_id=899581134 instance=ExtResource("5_itv62")]
 position = Vector2(193.28766, 959.7416)
 rotation = -0.0013414626
 dialog_content = Array[ExtResource("6_sx2l2")]([SubResource("Resource_rgqpb"), SubResource("Resource_fv7qr"), SubResource("Resource_ldjq8"), SubResource("Resource_y3yxe")])
 
-[node name="Spawner" parent="SpawnRoom" instance=ExtResource("9_sdfxn")]
+[node name="Spawner" parent="SpawnRoom" unique_id=1434036025 instance=ExtResource("9_sdfxn")]
 position = Vector2(512, 320)
 spawn_type = 0
 
-[node name="Spawner2" parent="SpawnRoom" instance=ExtResource("9_sdfxn")]
+[node name="Spawner2" parent="SpawnRoom" unique_id=331013780 instance=ExtResource("9_sdfxn")]
 position = Vector2(1024, 320.00003)
 spawn_type = 0
 
-[node name="PNJRoom" parent="." instance=ExtResource("14_dud5q")]
+[node name="PNJRoom" parent="." unique_id=1269232793 instance=ExtResource("14_dud5q")]
 y_sort_enabled = true
 position = Vector2(2816, -2944)
 metadata/_edit_lock_ = true
 
-[node name="PNJ" parent="PNJRoom" instance=ExtResource("5_itv62")]
+[node name="PNJ" parent="PNJRoom" unique_id=699274021 instance=ExtResource("5_itv62")]
 position = Vector2(1088, 64)
 dialog_content = Array[ExtResource("6_sx2l2")]([SubResource("Resource_hhwnt"), SubResource("Resource_8tn50"), SubResource("Resource_sdfxn"), SubResource("Resource_7hxl8")])
 
-[node name="Chest" parent="PNJRoom" instance=ExtResource("5_27bay")]
+[node name="Chest" parent="PNJRoom" unique_id=1143759323 instance=ExtResource("5_27bay")]
 position = Vector2(512, 448)
 _possible_pickups = Array[ExtResource("6_sof0w")]([SubResource("Resource_yrd2b")])
 pickup_amount = 2
 
-[node name="RoomA" parent="." instance=ExtResource("14_tj8pf")]
+[node name="RoomA" parent="." unique_id=58768179 instance=ExtResource("14_tj8pf")]
 y_sort_enabled = true
 position = Vector2(512, -3136)
 metadata/_edit_lock_ = true
 
-[node name="Spawner" parent="RoomA" instance=ExtResource("9_sdfxn")]
+[node name="Spawner" parent="RoomA" unique_id=547020819 instance=ExtResource("9_sdfxn")]
 position = Vector2(1344, 448)
 
-[node name="Spawner2" parent="RoomA" instance=ExtResource("9_sdfxn")]
-position = Vector2(-256, 896)
+[node name="Spawner2" parent="RoomA" unique_id=1227266352 instance=ExtResource("9_sdfxn")]
+position = Vector2(1472, 1280)
 spawn_type = 0
 
-[node name="Spawner3" parent="RoomA" instance=ExtResource("9_sdfxn")]
+[node name="Spawner3" parent="RoomA" unique_id=367052713 instance=ExtResource("9_sdfxn")]
 position = Vector2(832, 640)
 spawn_type = 0
 
-[node name="RoomA2" parent="." instance=ExtResource("14_tj8pf")]
+[node name="RoomA2" parent="." unique_id=60244448 instance=ExtResource("14_tj8pf")]
 y_sort_enabled = true
 position = Vector2(-1920, -1344)
-metadata/_edit_lock_ = true
 
-[node name="Spawner" parent="RoomA2" instance=ExtResource("9_sdfxn")]
+[node name="Spawner" parent="RoomA2" unique_id=520550949 instance=ExtResource("9_sdfxn")]
 position = Vector2(1280, 320)
 rotation = 0.8949305
 scale = Vector2(0.99999994, 0.99999994)
 spawn_type = 0
 
-[node name="Spawner2" parent="RoomA2" instance=ExtResource("9_sdfxn")]
+[node name="Spawner2" parent="RoomA2" unique_id=144416742 instance=ExtResource("9_sdfxn")]
 position = Vector2(1152, 1088)
 scale = Vector2(0.9999998, 0.9999998)
 spawn_type = 0
 
-[node name="ChestRoom" parent="." instance=ExtResource("1_5hph3")]
+[node name="ChestRoom" parent="." unique_id=1308719899 instance=ExtResource("1_5hph3")]
 position = Vector2(-1920, 320)
 script = ExtResource("18_hhwnt")
 metadata/_edit_lock_ = true
 
-[node name="Spawner" parent="ChestRoom" instance=ExtResource("9_sdfxn")]
+[node name="Spawner" parent="ChestRoom" unique_id=1647050223 instance=ExtResource("9_sdfxn")]
 position = Vector2(384, 320)
 rotation = 0.44746524
 spawn_on_ready = false
 spawn_type = 0
 
-[node name="Spawner2" parent="ChestRoom" instance=ExtResource("9_sdfxn")]
+[node name="Spawner2" parent="ChestRoom" unique_id=1012048854 instance=ExtResource("9_sdfxn")]
 position = Vector2(1152, 512)
 rotation = 2.7048488
 spawn_on_ready = false
 spawn_type = 0
 
-[node name="Spawner3" parent="ChestRoom" instance=ExtResource("9_sdfxn")]
+[node name="Spawner3" parent="ChestRoom" unique_id=973305946 instance=ExtResource("9_sdfxn")]
 position = Vector2(192, 896)
 rotation = -0.41552863
 spawn_on_ready = false
 spawn_type = 0
 
-[node name="Door" parent="ChestRoom" instance=ExtResource("16_usq73")]
+[node name="Door" parent="ChestRoom" unique_id=930770717 instance=ExtResource("16_usq73")]
 unique_name_in_owner = true
 position = Vector2(832, 64)
 opened = true
 
-[node name="Chest3" parent="ChestRoom" instance=ExtResource("5_27bay")]
+[node name="Chest3" parent="ChestRoom" unique_id=899640067 instance=ExtResource("5_27bay")]
 position = Vector2(384, 1216)
 _possible_pickups = Array[ExtResource("6_sof0w")]([ExtResource("7_ggavl")])
 pickup_amount = 3
 
-[node name="Chest4" parent="ChestRoom" instance=ExtResource("5_27bay")]
+[node name="Chest4" parent="ChestRoom" unique_id=1529657263 instance=ExtResource("5_27bay")]
 position = Vector2(512, 1152)
 _possible_pickups = Array[ExtResource("6_sof0w")]([ExtResource("10_sof0w")])
 
-[node name="Chest5" parent="ChestRoom" instance=ExtResource("5_27bay")]
+[node name="Chest5" parent="ChestRoom" unique_id=288478462 instance=ExtResource("5_27bay")]
 position = Vector2(640, 1216)
 _possible_pickups = Array[ExtResource("6_sof0w")]([ExtResource("7_ggavl")])
 pickup_amount = 2
 
-[node name="PlayerEnterRoomDetect" type="Area2D" parent="ChestRoom"]
+[node name="PlayerEnterRoomDetect" type="Area2D" parent="ChestRoom" unique_id=1245972848]
 unique_name_in_owner = true
 position = Vector2(832, 192)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ChestRoom/PlayerEnterRoomDetect"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ChestRoom/PlayerEnterRoomDetect" unique_id=1838006744]
 position = Vector2(-192, -64)
 polygon = PackedVector2Array(-64, 0, -64, 256, 448, 256, 448, 0, 384, 0, 384, 192, 0, 192, 0, 0)
 
-[node name="TeleporterRoom" parent="." instance=ExtResource("16_xjxsu")]
+[node name="TeleporterRoom" parent="." unique_id=1429371157 instance=ExtResource("16_xjxsu")]
 y_sort_enabled = true
 position = Vector2(2560, -5696)
 script = ExtResource("23_8tn50")
 metadata/_edit_lock_ = true
 
-[node name="Teleporter" parent="TeleporterRoom" instance=ExtResource("13_65or1")]
+[node name="Teleporter" parent="TeleporterRoom" unique_id=1629851015 instance=ExtResource("13_65or1")]
 unique_name_in_owner = true
 position = Vector2(448, 128)
 
-[node name="Spawner" parent="TeleporterRoom" instance=ExtResource("9_sdfxn")]
+[node name="Spawner" parent="TeleporterRoom" unique_id=1215445654 instance=ExtResource("9_sdfxn")]
 position = Vector2(640, 256)
 spawn_on_ready = false
 
-[node name="Spawner2" parent="TeleporterRoom" instance=ExtResource("9_sdfxn")]
+[node name="Spawner2" parent="TeleporterRoom" unique_id=1362729924 instance=ExtResource("9_sdfxn")]
 position = Vector2(384, 384)
 spawn_on_ready = false
 
-[node name="Spawner3" parent="TeleporterRoom" instance=ExtResource("9_sdfxn")]
+[node name="Spawner3" parent="TeleporterRoom" unique_id=53054337 instance=ExtResource("9_sdfxn")]
 position = Vector2(1344, 768)
 spawn_type = 0
 
-[node name="Spawner4" parent="TeleporterRoom" instance=ExtResource("9_sdfxn")]
+[node name="Spawner4" parent="TeleporterRoom" unique_id=1767908342 instance=ExtResource("9_sdfxn")]
 position = Vector2(768, 1088)
 spawn_on_ready = false
 spawn_type = 0
 
-[node name="Door" parent="TeleporterRoom" instance=ExtResource("16_usq73")]
+[node name="Door" parent="TeleporterRoom" unique_id=733619697 instance=ExtResource("16_usq73")]
 position = Vector2(1216, 1344)
 opened = true
 
-[node name="PlayerEnterRoomDetect" type="Area2D" parent="TeleporterRoom"]
+[node name="PlayerEnterRoomDetect" type="Area2D" parent="TeleporterRoom" unique_id=1016745345]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TeleporterRoom/PlayerEnterRoomDetect"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TeleporterRoom/PlayerEnterRoomDetect" unique_id=930226437]
 position = Vector2(1024, 1280)
 polygon = PackedVector2Array(0, 64, 0, -192, 256, -192, 256, -128, 64, -128, 64, 64)
 
-[node name="Bridges" parent="." instance=ExtResource("7_bjebc")]
+[node name="Bridges" parent="." unique_id=1734702116 instance=ExtResource("7_bjebc")]
 tile_map_data = PackedByteArray("AAAJAPz/AAAEAAEAAAAJAPv/AAADAAEAAAAJAPr/AAADAAEAAAAJAPn/AAAAAAAAAAAIAPn/AAAAAAEAAAAHAPn/AAAAAAEAAAAGAPn/AAAAAAEAAAAFAPn/AAAAAAEAAAAEAPn/AAAAAAEAAAADAPn/AAAAAAEAAAACAPn/AAAAAAEAAAABAPn/AAAAAAEAAAAAAPn/AAAAAAEAAAD///n/AAAAAAEAAAD+//n/AAAAAAEAAAD9//n/AAAAAAEAAAD8//n/AAABAAEAAAAJAPj/AAABAAAAAAAKAPj/AAADAAAAAAAKAPf/AAADAAEAAAAKAPb/AAADAAEAAAAKAPX/AAADAAEAAAAKAPT/AAADAAEAAAAKAPP/AAADAAEAAAAKAPL/AAAFAAEAAAD3////AAAFAAEAAAD3/wAAAAADAAEAAAARAO3/AAADAAEAAAARAO7/AAADAAEAAAARAO//AAACAAAAAAASAO//AAAAAAEAAAATAO//AAADAAAAAAATAO7/AAADAAEAAAATAO3/AAABAAAAAAAUAO3/AAAAAAEAAAAVAO3/AAACAAEAAAAdAOj/AAAEAAEAAAAdAOf/AAADAAEAAAAdAOb/AAADAAEAAAAdAOX/AAADAAEAAAAdAOT/AAADAAEAAAAdAOP/AAADAAEAAAAdAOL/AAADAAEAAAAdAOH/AAADAAEAAAAdAOD/AAAAAAAAAAAcAOH/AAADAAEAAAAcAOD/AAABAAAAAAAdAN//AAAFAAEAAAAeAOD/AAAFAAEAAAAeAOH/AAADAAEAAAAcAOL/AAACAAAAAAAeAOL/AAADAAAAAAAKAPH/AAAAAAAAAAAdAN7/AAAAAAAAAAD3/wEAAAAFAAEAAAARAOz/AAADAAEAAAAPAOv/AAABAAEAAAAQAOv/AAAAAAEAAAARAOv/AAAAAAAAAAD3/wIAAAABAAAAAAA=")
 metadata/_edit_lock_ = true
 
-[node name="Chest" parent="Bridges" instance=ExtResource("5_27bay")]
+[node name="Chest" parent="Bridges" unique_id=705114177 instance=ExtResource("5_27bay")]
 position = Vector2(3840, -3968)
 _possible_pickups = Array[ExtResource("6_sof0w")]([ExtResource("7_ggavl")])
 pickup_amount = 2
 
-[node name="Chest2" parent="Bridges" instance=ExtResource("5_27bay")]
+[node name="Chest2" parent="Bridges" unique_id=1794487638 instance=ExtResource("5_27bay")]
 position = Vector2(3712, -3968)
 _possible_pickups = Array[ExtResource("6_sof0w")]([ExtResource("7_ggavl")])
 pickup_amount = 3
 
-[node name="InvisibleWalls" parent="." instance=ExtResource("8_5rr72")]
+[node name="InvisibleWalls" parent="." unique_id=1050288764 instance=ExtResource("8_5rr72")]
 visible = false
 tile_map_data = PackedByteArray("AAAKAPv/AAAAAAAAAAAKAPr/AAAAAAAAAAAKAPn/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAPr/AAAAAAAAAAD9//r/AAAAAAAAAAD+//r/AAAAAAAAAAD///r/AAAAAAAAAAAAAPr/AAAAAAAAAAABAPr/AAAAAAAAAAACAPr/AAAAAAAAAAADAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAAGAPr/AAAAAAAAAAAHAPr/AAAAAAAAAAD9//j/AAAAAAAAAAD+//j/AAAAAAAAAAD///j/AAAAAAAAAAAFAPj/AAAAAAAAAAAGAPj/AAAAAAAAAAAHAPj/AAAAAAAAAAAIAPj/AAAAAAAAAAAEAPj/AAAAAAAAAAADAPj/AAAAAAAAAAACAPj/AAAAAAAAAAABAPj/AAAAAAAAAAAAAPj/AAAAAAAAAAAIAPf/AAAAAAAAAAAJAPf/AAAAAAAAAAALAPj/AAAAAAAAAAALAPf/AAAAAAAAAAALAPb/AAAAAAAAAAALAPX/AAAAAAAAAAALAPT/AAAAAAAAAAALAPP/AAAAAAAAAAAJAPP/AAAAAAAAAAAJAPT/AAAAAAAAAAAJAPX/AAAAAAAAAAAJAPb/AAAAAAAAAAALAPn/AAAAAAAAAAAQAO3/AAAAAAAAAAAQAO7/AAAAAAAAAAAQAO//AAAAAAAAAAAQAPD/AAAAAAAAAAARAPD/AAAAAAAAAAASAPD/AAAAAAAAAAATAPD/AAAAAAAAAAAUAPD/AAAAAAAAAAAUAO//AAAAAAAAAAAUAO7/AAAAAAAAAAASAO7/AAAAAAAAAAASAO3/AAAAAAAAAAASAOz/AAAAAAAAAAASAOv/AAAAAAAAAAATAOz/AAAAAAAAAAAUAOz/AAAAAAAAAAAcAOP/AAAAAAAAAAAcAOT/AAAAAAAAAAAcAOX/AAAAAAAAAAAcAOb/AAAAAAAAAAAcAOf/AAAAAAAAAAAeAOP/AAAAAAAAAAAeAOT/AAAAAAAAAAAeAOf/AAAAAAAAAAAeAOb/AAAAAAAAAAAeAOX/AAAAAAAAAAAfAOD/AAAAAAAAAAAfAOH/AAAAAAAAAAAfAOL/AAAAAAAAAAAbAOD/AAAAAAAAAAAbAOH/AAAAAAAAAAAbAOL/AAAAAAAAAAAfAOP/AAAAAAAAAAAbAOP/AAAAAAAAAAAQAOz/AAAAAAAAAAAQAOr/AAAAAAAAAAARAOr/AAAAAAAAAAASAOr/AAAAAAAAAAAJAPL/AAABAAAAAAALAPL/AAABAAAAAAAbAN//AAAAAAAAAAAfAN//AAAAAAAAAAD4/wEAAAAAAAAAAAD2/wIAAAAAAAAAAAD2/wEAAAAAAAAAAAA=")
