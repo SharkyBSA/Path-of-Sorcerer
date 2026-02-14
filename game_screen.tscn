@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bwlgq3t0fdb61"]
+[gd_scene format=3 uid="uid://bwlgq3t0fdb61"]
 
 [ext_resource type="Script" uid="uid://cks8lg3ysrocd" path="res://game_screen.gd" id="1_j7yda"]
 [ext_resource type="PackedScene" uid="uid://43ku0c7m8gqa" path="res://player/player.tscn" id="1_yla3h"]
@@ -20,28 +20,29 @@ script = ExtResource("3_6mti6")
 level_list = Array[ExtResource("2_3vj30")]([SubResource("Resource_aybt7")])
 metadata/_custom_type_script = "uid://cr752oxghekfm"
 
-[node name="GameScreen" type="Node2D"]
+[node name="GameScreen" type="Node2D" unique_id=250847563]
 process_mode = 1
+y_sort_enabled = true
 script = ExtResource("1_j7yda")
 level_graph = SubResource("Resource_oymjd")
 
-[node name="Player" parent="." instance=ExtResource("1_yla3h")]
+[node name="Player" parent="." unique_id=482588245 instance=ExtResource("1_yla3h")]
 unique_name_in_owner = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=591312593]
 
-[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("7_6mti6")]
+[node name="PlayerHUD" parent="CanvasLayer" unique_id=1025113822 instance=ExtResource("7_6mti6")]
 unique_name_in_owner = true
 
-[node name="End Menu" parent="CanvasLayer" instance=ExtResource("2_j7yda")]
+[node name="End Menu" parent="CanvasLayer" unique_id=360867266 instance=ExtResource("2_j7yda")]
 unique_name_in_owner = true
 process_mode = 2
 visible = false
 
-[node name="PauseMenuController" parent="CanvasLayer" instance=ExtResource("3_lxtpa")]
+[node name="PauseMenuController" parent="CanvasLayer" unique_id=1597670359 instance=ExtResource("3_lxtpa")]
 visible = false
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1227466763]
 unique_name_in_owner = true
 process_mode = 3
 stream = ExtResource("4_3vj30")

@@ -28,7 +28,7 @@ var health := max_health:
 var detected_player : Player = null
 var collided_player : Player = null
 
-@onready var hit_animation: AnimationPlayer = %HitAnimation
+@onready var hit_animation: AnimationPlayer = %MobAnimation
 @onready var player_detection_area: Area2D = %PlayerDetectionArea
 @onready var player_hit_area: Area2D = %HitPlayerArea
 @onready var hit_timer: Timer = %HitTimer
@@ -42,13 +42,12 @@ func _ready() -> void:
 	player_detection_area.body_entered.connect(_on_player_detection_area_entered)
 	player_detection_area.body_exited.connect(_on_player_detection_area_exited)
 	
-	hit_animation.animation_set_next("hit_player","hit_reset")
 	hit_animation.animation_changed.connect(func(old_anim: StringName,_new_anim: StringName)->void:
 		if old_anim.contains("hit_player") :
 			_hit_player()
 			hit_timer.start()
 		)
-		
+
 func _physics_process(delta: float) -> void:
 	if(detected_player==null):
 		_idle_mouvement(delta)

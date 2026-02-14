@@ -30,7 +30,7 @@ var health := max_health:
 #Player detection
 var detected_player : Player = null
 
-@onready var body_sprite: Sprite2D = %BodySprite
+@onready var body_sprite: Sprite2D = %Sprite
 @onready var damage_sound: AudioStreamPlayer2D = %DamageSound
 @onready var shoot_timer: Timer = %ShootTimer
 @onready var player_detection_area: Area2D = %PlayerDetectionArea

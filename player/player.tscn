@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bw03btxpkxde4" path="res://player/godot_bottom.png" id="1_rkbax"]
 [ext_resource type="PackedScene" uid="uid://5ays6kuo0xio" path="res://common/shadow.tscn" id="2_g1dw6"]
 [ext_resource type="Script" uid="uid://b310rakud4l8v" path="res://player/player_sprite.gd" id="3_yw30f"]
+[ext_resource type="Animation" uid="uid://bqnesydpxvgn3" path="res://common/animation/hover_entity.res" id="4_wodsf"]
 [ext_resource type="Script" uid="uid://djmlb8fcjgvng" path="res://player/weapon_pivot.gd" id="5_boad6"]
 [ext_resource type="PackedScene" uid="uid://bngctva7f3mni" path="res://weapons/player_weapons/semi_auto/weapon_semi_auto.tscn" id="7_wodsf"]
 [ext_resource type="AudioStream" uid="uid://c6bk7awsqnbt8" path="res://player/pain_01.wav" id="11_wodsf"]
@@ -24,7 +25,7 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:position:y")
+tracks/0/path = NodePath("Sprite:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -33,26 +34,10 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_wodsf"]
-resource_name = "idle"
-length = 2.0
-loop_mode = 2
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 2, 0),
-"points": PackedFloat32Array(-44, 0, 0, 0.4, 0, -50, -0.4, 0, 0.4, 0, -44, -0.4, 0, 0.2, 0),
-"times": PackedFloat32Array(0, 1, 2)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_32hag"]
 _data = {
 &"RESET": SubResource("Animation_kb6p2"),
-&"idle": SubResource("Animation_wodsf")
+&"idle": ExtResource("4_wodsf")
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_65viv"]
@@ -81,13 +66,15 @@ z_index = 1
 position = Vector2(0, -23)
 shape = SubResource("CapsuleShape2D_yw30f")
 
-[node name="PlayerSprite" type="Sprite2D" parent="." unique_id=1065221422]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1065221422]
 position = Vector2(0, -44)
 texture = ExtResource("1_rkbax")
+offset = Vector2(0, -40)
 script = ExtResource("3_yw30f")
-inclinaison_max = 0.2617993877991494
+inclinaison_max = 0.17453292519943295
+position_offset_max = 15.0
 
-[node name="PlayerSpriteAnim" type="AnimationPlayer" parent="PlayerSprite" unique_id=774902666]
+[node name="PlayerSpriteAnim" type="AnimationPlayer" parent="Sprite" unique_id=774902666]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_32hag")
 autoplay = &"idle"
@@ -100,7 +87,7 @@ script = ExtResource("5_boad6")
 
 [node name="WeaponAnchor" type="Marker2D" parent="WeaponPivot" unique_id=1230391854]
 unique_name_in_owner = true
-position = Vector2(70, 0)
+position = Vector2(80, 0)
 
 [node name="Weapon_semi_auto" parent="WeaponPivot/WeaponAnchor" unique_id=1408686520 instance=ExtResource("7_wodsf")]
 

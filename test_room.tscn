@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://6vk43bg5hv2m"]
+[gd_scene format=3 uid="uid://6vk43bg5hv2m"]
 
 [ext_resource type="PackedScene" uid="uid://cu2rb5dl4ljte" path="res://levels/rooms/room_a.tscn" id="1_oqbmf"]
 [ext_resource type="PackedScene" uid="uid://43ku0c7m8gqa" path="res://player/player.tscn" id="2_arrdh"]
@@ -23,40 +23,39 @@ text = "Hello stranger"
 script = ExtResource("9_i507p")
 text = "Platipuf"
 
-[node name="TestRoom" type="Node2D"]
+[node name="TestRoom" type="Node2D" unique_id=1241403059]
 y_sort_enabled = true
 position = Vector2(-40, -54)
 
-[node name="RoomA" parent="." instance=ExtResource("1_oqbmf")]
+[node name="RoomA" parent="." unique_id=1169892996 instance=ExtResource("1_oqbmf")]
 position = Vector2(40, -74)
 
-[node name="Chest" parent="." instance=ExtResource("7_f0xav")]
+[node name="Chest" parent="." unique_id=1353511261 instance=ExtResource("7_f0xav")]
 position = Vector2(796, 142)
 _possible_pickups = Array[ExtResource("3_f0xav")]([ExtResource("4_3vbl4"), ExtResource("5_6r6vx")])
 pickup_amount = 2
 
-[node name="Player" parent="." instance=ExtResource("2_arrdh")]
+[node name="Player" parent="." unique_id=1721252840 instance=ExtResource("2_arrdh")]
 position = Vector2(1000, 388)
-scale = Vector2(0.99999994, 0.99999994)
 
-[node name="ShootingMob" parent="." instance=ExtResource("7_3vbl4")]
+[node name="ShootingMob" parent="." unique_id=1247887379 instance=ExtResource("7_3vbl4")]
 position = Vector2(373, 972)
 detection_distance = 0.0
 
-[node name="PNJ" parent="." instance=ExtResource("8_3vbl4")]
+[node name="PNJ" parent="." unique_id=980245628 instance=ExtResource("8_3vbl4")]
 position = Vector2(1328, 113)
 dialog_content = Array[ExtResource("9_i507p")]([SubResource("Resource_l3001"), SubResource("Resource_i507p"), SubResource("Resource_2602c")])
 
-[node name="Door" parent="." instance=ExtResource("11_2602c")]
+[node name="Door" parent="." unique_id=10279210 instance=ExtResource("11_2602c")]
 position = Vector2(488, 118)
 direction = 1
 
-[node name="Door2" parent="." instance=ExtResource("11_2602c")]
+[node name="Door2" parent="." unique_id=912110054 instance=ExtResource("11_2602c")]
 position = Vector2(488, 246)
 direction = 1
 
-[node name="Door3" parent="." instance=ExtResource("11_2602c")]
+[node name="Door3" parent="." unique_id=1128961162 instance=ExtResource("11_2602c")]
 position = Vector2(1064, 502)
 
-[node name="Door4" parent="." instance=ExtResource("11_2602c")]
+[node name="Door4" parent="." unique_id=1530649535 instance=ExtResource("11_2602c")]
 position = Vector2(1192, 502)

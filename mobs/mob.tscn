@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://c0i2gypp2yyrp"]
+[gd_scene format=3 uid="uid://c0i2gypp2yyrp"]
 
 [ext_resource type="Script" uid="uid://cwp1wiie106va" path="res://mobs/mob.gd" id="1_fgbma"]
+[ext_resource type="Animation" uid="uid://bqnesydpxvgn3" path="res://common/animation/hover_entity.res" id="2_il41e"]
 [ext_resource type="Texture2D" uid="uid://nohjoiah3jgr" path="res://mobs/sword_inactive.png" id="2_p7hwu"]
 [ext_resource type="AudioStream" uid="uid://dfc5tcrthtntk" path="res://mobs/hurt.wav" id="3_4p423"]
 [ext_resource type="AudioStream" uid="uid://cte8ddxd7o4de" path="res://mobs/kill.wav" id="4_cxx3d"]
@@ -104,10 +105,11 @@ tracks/1/keys = {
 _data = {
 &"RESET": SubResource("Animation_4p423"),
 &"hit_player": SubResource("Animation_p7hwu"),
-&"hit_reset": SubResource("Animation_fgbma")
+&"hit_reset": SubResource("Animation_fgbma"),
+&"hover": ExtResource("2_il41e")
 }
 
-[node name="Mob" type="CharacterBody2D"]
+[node name="Mob" type="CharacterBody2D" unique_id=791452471]
 collision_layer = 4
 collision_mask = 11
 motion_mode = 1
@@ -117,56 +119,58 @@ acceleration = 800.0
 slow_distance = 250.0
 slow_factor = 0.7
 
-[node name="HitBox" type="CollisionShape2D" parent="."]
+[node name="HitBox" type="CollisionShape2D" parent="." unique_id=1086726144]
 visible = false
 z_index = 1
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_cxx3d")
 debug_color = Color(0.78039217, 0.16470589, 0.16470589, 0.41960785)
 
-[node name="PlayerDetectionArea" type="Area2D" parent="."]
+[node name="PlayerDetectionArea" type="Area2D" parent="." unique_id=97436112]
 unique_name_in_owner = true
 collision_layer = 0
 
-[node name="PlayerDetectionShape" type="CollisionShape2D" parent="PlayerDetectionArea"]
+[node name="PlayerDetectionShape" type="CollisionShape2D" parent="PlayerDetectionArea" unique_id=208045972]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_4p423")
 debug_color = Color(0, 0.6, 0.7019608, 0.41960785)
 
-[node name="HitPlayerArea" type="Area2D" parent="."]
+[node name="HitPlayerArea" type="Area2D" parent="." unique_id=1226307916]
 unique_name_in_owner = true
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitPlayerArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitPlayerArea" unique_id=872375773]
 position = Vector2(42, 0)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_fgbma")
 debug_color = Color(0, 0.89411765, 0.45882353, 0.41960785)
 
-[node name="HitTimer" type="Timer" parent="."]
+[node name="HitTimer" type="Timer" parent="." unique_id=1157391875]
 unique_name_in_owner = true
 wait_time = 0.7
 
-[node name="HitAnimation" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_4p423")
-}
-
-[node name="DamageSound" type="AudioStreamPlayer2D" parent="."]
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="." unique_id=658881577]
 unique_name_in_owner = true
 stream = ExtResource("3_4p423")
 bus = &"Effects"
 
-[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=735967249]
 unique_name_in_owner = true
 stream = ExtResource("4_cxx3d")
 bus = &"Effects"
 
-[node name="ShadowRotationPoint" type="Node2D" parent="."]
+[node name="ShadowRotationPoint" type="Node2D" parent="." unique_id=598746731]
 unique_name_in_owner = true
 
-[node name="Shadow" parent="ShadowRotationPoint" instance=ExtResource("4_il41e")]
+[node name="Shadow" parent="ShadowRotationPoint" unique_id=2021748978 instance=ExtResource("4_il41e")]
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1118620859]
 texture = ExtResource("2_p7hwu")
+
+[node name="MobAnimation" type="AnimationPlayer" parent="Sprite" unique_id=87372334]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_4p423")
+autoplay = &"hover"
+next/hit_player = &"hit_reset"
+next/hit_reset = &"hover"
